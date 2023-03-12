@@ -13,6 +13,9 @@ module.exports = defineConfig({
       Components({
         resolvers: [ElementPlusResolver()],
       }),
+      require('unplugin-element-plus/webpack')({
+        // options
+      }),
     ],
   },
 });

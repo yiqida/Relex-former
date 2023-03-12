@@ -4,7 +4,7 @@ const routes = [
   {
     path: "/",
     name: "edit",
-    component: () => import(/* webpackChunkName: "edit" */'../pages/Edit.vue')
+    component: () => import(/* webpackChunkName: "edit" */'../pages/EditPage.vue')
   },
   {
     path: "/runtime",
