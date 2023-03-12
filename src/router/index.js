@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import edit from "../pages/Edit.vue";
 
 const routes = [
   {
     path: "/",
     name: "edit",
-    component: edit,
+    component: () => import(/* webpackChunkName: "edit" */'../pages/Edit.vue')
   },
   {
     path: "/runtime",
