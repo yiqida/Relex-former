@@ -1,0 +1,583 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@vitejs/plugin-vue': ^4.1.0
+  typescript: ^4.9.3
+  vite: ^4.2.0
+  vue: ^3.2.47
+  vue-tsc: ^1.2.0
+
+dependencies:
+  vue: 3.2.47
+
+devDependencies:
+  '@vitejs/plugin-vue': 4.1.0_vite@4.2.1+vue@3.2.47
+  typescript: 4.9.5
+  vite: 4.2.1
+  vue-tsc: 1.2.0_typescript@4.9.5
+
+packages:
+
+  /@babel/helper-string-parser/7.19.4:
+    resolution: {integrity: sha1-ONOstlS0cBqbd/sGFalvd1w6nmM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@babel/helper-string-parser/-/helper-string-parser-7.19.4.tgz}
+    engines: {node: '>=6.9.0'}
+
+  /@babel/helper-validator-identifier/7.19.1:
+    resolution: {integrity: sha1-fuqDTPMpAf/cGn7lVeL5wn4knKI=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@babel/helper-validator-identifier/-/helper-validator-identifier-7.19.1.tgz}
+    engines: {node: '>=6.9.0'}
+
+  /@babel/parser/7.21.4:
+    resolution: {integrity: sha1-lAA/38Ugu+KHXUrlV7Q9222IDxc=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@babel/parser/-/parser-7.21.4.tgz}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.21.4
+
+  /@babel/types/7.21.4:
+    resolution: {integrity: sha1-LV1rt5CGmbO0FkCf/TtdqiWwMNQ=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@babel/types/-/types-7.21.4.tgz}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-string-parser': 7.19.4
+      '@babel/helper-validator-identifier': 7.19.1
+      to-fast-properties: 2.0.0
+
+  /@esbuild/android-arm/0.17.16:
+    resolution: {integrity: sha1-XEf2p8LK2m7UtNTnLYxm522BKBI=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/android-arm/-/android-arm-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/android-arm64/0.17.16:
+    resolution: {integrity: sha1-exjKtfTZPoeDBhlu7Sa22WDBJXY=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/android-arm64/-/android-arm64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/android-x64/0.17.16:
+    resolution: {integrity: sha1-hoam6YNZBx/9UxIEZVGUPnJExRo=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/android-x64/-/android-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [android]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/darwin-arm64/0.17.16:
+    resolution: {integrity: sha1-qnn79EdjDKBpallr66lip3W785Q=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/darwin-arm64/-/darwin-arm64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/darwin-x64/0.17.16:
+    resolution: {integrity: sha1-1daO5RBQcQTafnUDIkxkfJV+Fj4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/darwin-x64/-/darwin-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/freebsd-arm64/0.17.16:
+    resolution: {integrity: sha1-sAtMyMLkJJB8/jpgc4SrJHlO3VI=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/freebsd-arm64/-/freebsd-arm64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/freebsd-x64/0.17.16:
+    resolution: {integrity: sha1-hK9EMKB3MLULvJRakM9wNsGFO3Y=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/freebsd-x64/-/freebsd-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-arm/0.17.16:
+    resolution: {integrity: sha1-tlx81bDq3Qj5Gqtmud2oG2pLKnA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-arm/-/linux-arm-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-arm64/0.17.16:
+    resolution: {integrity: sha1-NVcdFd5icshi2c5jQTcvs87w8mY=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-arm64/-/linux-arm64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-ia32/0.17.16:
+    resolution: {integrity: sha1-ZzpoyyUc5EoApkIq2ikGTFoc0sA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-ia32/-/linux-ia32-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [ia32]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-loong64/0.17.16:
+    resolution: {integrity: sha1-R34to0q0b/2/R0D6ZEHoAEUkk4U=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-loong64/-/linux-loong64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [loong64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-mips64el/0.17.16:
+    resolution: {integrity: sha1-4eloe72qgx18NO3JJ4IAmCwaS/Q=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-mips64el/-/linux-mips64el-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [mips64el]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-ppc64/0.17.16:
+    resolution: {integrity: sha1-LxkHXWNiKYfoboOkt4Zs1Xt5bGA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-ppc64/-/linux-ppc64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [ppc64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-riscv64/0.17.16:
+    resolution: {integrity: sha1-u/QKOPA7okNP5ptc7uxdE8dCsyk=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-riscv64/-/linux-riscv64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [riscv64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-s390x/0.17.16:
+    resolution: {integrity: sha1-0rjAd5zNK3kXzfD6uIMaRo4PnAE=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-s390x/-/linux-s390x-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [s390x]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/linux-x64/0.17.16:
+    resolution: {integrity: sha1-2kiznP3BsSp0l2Yl9YPwMerENZA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/linux-x64/-/linux-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/netbsd-x64/0.17.16:
+    resolution: {integrity: sha1-3e+YWu03zIGQjSVztmwCmdvEkDc=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/netbsd-x64/-/netbsd-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [netbsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/openbsd-x64/0.17.16:
+    resolution: {integrity: sha1-hQNb+J79ZukGi8cqpruFosMX0JA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/openbsd-x64/-/openbsd-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [openbsd]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/sunos-x64/0.17.16:
+    resolution: {integrity: sha1-FjOOyrhUyy2DHMnunMIe9pVm4fM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/sunos-x64/-/sunos-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [sunos]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/win32-arm64/0.17.16:
+    resolution: {integrity: sha1-Qj9Gu3RK/4l6X3RDVGnh70lS40M=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/win32-arm64/-/win32-arm64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/win32-ia32/0.17.16:
+    resolution: {integrity: sha1-GXi+WxkscGO9LI1ZYOshPhlkdA4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/win32-ia32/-/win32-ia32-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@esbuild/win32-x64/0.17.16:
+    resolution: {integrity: sha1-Jg8ZsKMwDSLDo/UnIsZx3FYe2qM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@esbuild/win32-x64/-/win32-x64-0.17.16.tgz}
+    engines: {node: '>=12'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@vitejs/plugin-vue/4.1.0_vite@4.2.1+vue@3.2.47:
+    resolution: {integrity: sha1-tqnYPNkVdffuFVk/ZEQ5f2h1EHM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vitejs/plugin-vue/-/plugin-vue-4.1.0.tgz}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.0.0
+      vue: ^3.2.25
+    dependencies:
+      vite: 4.2.1
+      vue: 3.2.47
+    dev: true
+
+  /@volar/language-core/1.3.0-alpha.0:
+    resolution: {integrity: sha1-SSS0y8N9vOXzhFwdKygRk4IjqYA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@volar/language-core/-/language-core-1.3.0-alpha.0.tgz}
+    dependencies:
+      '@volar/source-map': 1.3.0-alpha.0
+    dev: true
+
+  /@volar/source-map/1.3.0-alpha.0:
+    resolution: {integrity: sha1-xF1R7Ll1lgTSn7gCEdL8l2XlVZw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@volar/source-map/-/source-map-1.3.0-alpha.0.tgz}
+    dependencies:
+      muggle-string: 0.2.2
+    dev: true
+
+  /@volar/typescript/1.3.0-alpha.0:
+    resolution: {integrity: sha1-95u8mTkBZwCBKxgZHEfrA1kTxsM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@volar/typescript/-/typescript-1.3.0-alpha.0.tgz}
+    dependencies:
+      '@volar/language-core': 1.3.0-alpha.0
+    dev: true
+
+  /@volar/vue-language-core/1.2.0:
+    resolution: {integrity: sha1-pgCqk8ak6JvytSW36Haznjr9+5s=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@volar/vue-language-core/-/vue-language-core-1.2.0.tgz}
+    dependencies:
+      '@volar/language-core': 1.3.0-alpha.0
+      '@volar/source-map': 1.3.0-alpha.0
+      '@vue/compiler-dom': 3.2.47
+      '@vue/compiler-sfc': 3.2.47
+      '@vue/reactivity': 3.2.47
+      '@vue/shared': 3.2.47
+      minimatch: 6.2.0
+      muggle-string: 0.2.2
+      vue-template-compiler: 2.7.14
+    dev: true
+
+  /@volar/vue-typescript/1.2.0:
+    resolution: {integrity: sha1-gl2rRiShFti+Ie+/DEp71t7FHTc=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@volar/vue-typescript/-/vue-typescript-1.2.0.tgz}
+    dependencies:
+      '@volar/typescript': 1.3.0-alpha.0
+      '@volar/vue-language-core': 1.2.0
+    dev: true
+
+  /@vue/compiler-core/3.2.47:
+    resolution: {integrity: sha1-PgfGhNdIl6yapZIsUgdB8wKSZ/g=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/compiler-core/-/compiler-core-3.2.47.tgz}
+    dependencies:
+      '@babel/parser': 7.21.4
+      '@vue/shared': 3.2.47
+      estree-walker: 2.0.2
+      source-map: 0.6.1
+
+  /@vue/compiler-dom/3.2.47:
+    resolution: {integrity: sha1-oLBsr373BWk55WPcqpy94weU8wU=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/compiler-dom/-/compiler-dom-3.2.47.tgz}
+    dependencies:
+      '@vue/compiler-core': 3.2.47
+      '@vue/shared': 3.2.47
+
+  /@vue/compiler-sfc/3.2.47:
+    resolution: {integrity: sha1-G9w29s3BZD9y4sOX6xo5j1AErT0=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/compiler-sfc/-/compiler-sfc-3.2.47.tgz}
+    dependencies:
+      '@babel/parser': 7.21.4
+      '@vue/compiler-core': 3.2.47
+      '@vue/compiler-dom': 3.2.47
+      '@vue/compiler-ssr': 3.2.47
+      '@vue/reactivity-transform': 3.2.47
+      '@vue/shared': 3.2.47
+      estree-walker: 2.0.2
+      magic-string: 0.25.9
+      postcss: 8.4.21
+      source-map: 0.6.1
+
+  /@vue/compiler-ssr/3.2.47:
+    resolution: {integrity: sha1-NYcsAaJzqsTWBwq52NqRirEwV+4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/compiler-ssr/-/compiler-ssr-3.2.47.tgz}
+    dependencies:
+      '@vue/compiler-dom': 3.2.47
+      '@vue/shared': 3.2.47
+
+  /@vue/reactivity-transform/3.2.47:
+    resolution: {integrity: sha1-5F300GNw+KvykIGhav0lz/um2E4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/reactivity-transform/-/reactivity-transform-3.2.47.tgz}
+    dependencies:
+      '@babel/parser': 7.21.4
+      '@vue/compiler-core': 3.2.47
+      '@vue/shared': 3.2.47
+      estree-walker: 2.0.2
+      magic-string: 0.25.9
+
+  /@vue/reactivity/3.2.47:
+    resolution: {integrity: sha1-HWOZB06t/D7TXHJ+L9cH1ogRQLY=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/reactivity/-/reactivity-3.2.47.tgz}
+    dependencies:
+      '@vue/shared': 3.2.47
+
+  /@vue/runtime-core/3.2.47:
+    resolution: {integrity: sha1-QG663j1VUcAPxkCbvB7rEPMuEh0=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/runtime-core/-/runtime-core-3.2.47.tgz}
+    dependencies:
+      '@vue/reactivity': 3.2.47
+      '@vue/shared': 3.2.47
+
+  /@vue/runtime-dom/3.2.47:
+    resolution: {integrity: sha1-k+dg7q6rhN7ft8Pq8+1Y13Ypk4I=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/runtime-dom/-/runtime-dom-3.2.47.tgz}
+    dependencies:
+      '@vue/runtime-core': 3.2.47
+      '@vue/shared': 3.2.47
+      csstype: 2.6.21
+
+  /@vue/server-renderer/3.2.47_vue@3.2.47:
+    resolution: {integrity: sha1-iqHRhx/E61p4Uap/dB+PcA5t48A=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/server-renderer/-/server-renderer-3.2.47.tgz}
+    peerDependencies:
+      vue: 3.2.47
+    dependencies:
+      '@vue/compiler-ssr': 3.2.47
+      '@vue/shared': 3.2.47
+      vue: 3.2.47
+
+  /@vue/shared/3.2.47:
+    resolution: {integrity: sha1-5ZfvdQhsbolv9UeKa/wKeqS70Uw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/@vue/shared/-/shared-3.2.47.tgz}
+
+  /balanced-match/1.0.2:
+    resolution: {integrity: sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/balanced-match/-/balanced-match-1.0.2.tgz}
+    dev: true
+
+  /brace-expansion/2.0.1:
+    resolution: {integrity: sha1-HtxFng8MVISG7Pn8mfIiE2S5oK4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/brace-expansion/-/brace-expansion-2.0.1.tgz}
+    dependencies:
+      balanced-match: 1.0.2
+    dev: true
+
+  /csstype/2.6.21:
+    resolution: {integrity: sha1-LvuFt8xVyAAXxmpa18vZMf2jqQ4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/csstype/-/csstype-2.6.21.tgz}
+
+  /de-indent/1.0.2:
+    resolution: {integrity: sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/de-indent/-/de-indent-1.0.2.tgz}
+    dev: true
+
+  /esbuild/0.17.16:
+    resolution: {integrity: sha1-Xv7CSo/yngwVc1nyfhtVMqcotyA=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/esbuild/-/esbuild-0.17.16.tgz}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      '@esbuild/android-arm': 0.17.16
+      '@esbuild/android-arm64': 0.17.16
+      '@esbuild/android-x64': 0.17.16
+      '@esbuild/darwin-arm64': 0.17.16
+      '@esbuild/darwin-x64': 0.17.16
+      '@esbuild/freebsd-arm64': 0.17.16
+      '@esbuild/freebsd-x64': 0.17.16
+      '@esbuild/linux-arm': 0.17.16
+      '@esbuild/linux-arm64': 0.17.16
+      '@esbuild/linux-ia32': 0.17.16
+      '@esbuild/linux-loong64': 0.17.16
+      '@esbuild/linux-mips64el': 0.17.16
+      '@esbuild/linux-ppc64': 0.17.16
+      '@esbuild/linux-riscv64': 0.17.16
+      '@esbuild/linux-s390x': 0.17.16
+      '@esbuild/linux-x64': 0.17.16
+      '@esbuild/netbsd-x64': 0.17.16
+      '@esbuild/openbsd-x64': 0.17.16
+      '@esbuild/sunos-x64': 0.17.16
+      '@esbuild/win32-arm64': 0.17.16
+      '@esbuild/win32-ia32': 0.17.16
+      '@esbuild/win32-x64': 0.17.16
+    dev: true
+
+  /estree-walker/2.0.2:
+    resolution: {integrity: sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/estree-walker/-/estree-walker-2.0.2.tgz}
+
+  /fsevents/2.3.2:
+    resolution: {integrity: sha1-ilJveLj99GI7cJ4Ll1xSwkwC/Ro=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/fsevents/-/fsevents-2.3.2.tgz}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /function-bind/1.1.1:
+    resolution: {integrity: sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/function-bind/-/function-bind-1.1.1.tgz}
+    dev: true
+
+  /has/1.0.3:
+    resolution: {integrity: sha1-ci18v8H2qoJB8W3YFOAR4fQeh5Y=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/has/-/has-1.0.3.tgz}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      function-bind: 1.1.1
+    dev: true
+
+  /he/1.2.0:
+    resolution: {integrity: sha1-hK5l+n6vsWX922FWauFLrwVmTw8=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/he/-/he-1.2.0.tgz}
+    hasBin: true
+    dev: true
+
+  /is-core-module/2.11.0:
+    resolution: {integrity: sha1-rUyz44Y+gUUjyW8/WNJsxXD/AUQ=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/is-core-module/-/is-core-module-2.11.0.tgz}
+    dependencies:
+      has: 1.0.3
+    dev: true
+
+  /magic-string/0.25.9:
+    resolution: {integrity: sha1-3n+fr5HvihyR0CwuUxTIJ3283Rw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/magic-string/-/magic-string-0.25.9.tgz}
+    dependencies:
+      sourcemap-codec: 1.4.8
+
+  /minimatch/6.2.0:
+    resolution: {integrity: sha1-K3D9EylBeMacBN/AWuvbl6TnnkI=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/minimatch/-/minimatch-6.2.0.tgz}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
+  /muggle-string/0.2.2:
+    resolution: {integrity: sha1-eGqlP+oWUsYcalnh+DkpKyYrxyo=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/muggle-string/-/muggle-string-0.2.2.tgz}
+    dev: true
+
+  /nanoid/3.3.6:
+    resolution: {integrity: sha1-RDOAyFbW6fmCQmfZYLQjatWD6kw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/nanoid/-/nanoid-3.3.6.tgz}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  /path-parse/1.0.7:
+    resolution: {integrity: sha1-+8EUtgykKzDZ2vWFjkvWi77bZzU=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/path-parse/-/path-parse-1.0.7.tgz}
+    dev: true
+
+  /picocolors/1.0.0:
+    resolution: {integrity: sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/picocolors/-/picocolors-1.0.0.tgz}
+
+  /postcss/8.4.21:
+    resolution: {integrity: sha1-xjm3GaV+/DGHsToddlZ1SF9BNPQ=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/postcss/-/postcss-8.4.21.tgz}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.6
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+
+  /resolve/1.22.2:
+    resolution: {integrity: sha1-DtCUPU4wGGeVV2bJ8+GubQHGhF8=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/resolve/-/resolve-1.22.2.tgz}
+    hasBin: true
+    dependencies:
+      is-core-module: 2.11.0
+      path-parse: 1.0.7
+      supports-preserve-symlinks-flag: 1.0.0
+    dev: true
+
+  /rollup/3.20.2:
+    resolution: {integrity: sha1-95jGADF/IW3i5K2fTZqzCom2kP8=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/rollup/-/rollup-3.20.2.tgz}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /source-map-js/1.0.2:
+    resolution: {integrity: sha1-rbw2HZxi3zgBJefxYfccgm8eSQw=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/source-map-js/-/source-map-js-1.0.2.tgz}
+    engines: {node: '>=0.10.0'}
+
+  /source-map/0.6.1:
+    resolution: {integrity: sha1-dHIq8y6WFOnCh6jQu95IteLxomM=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/source-map/-/source-map-0.6.1.tgz}
+    engines: {node: '>=0.10.0'}
+
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
+
+  /supports-preserve-symlinks-flag/1.0.0:
+    resolution: {integrity: sha1-btpL00SjyUrqN21MwxvHcxEDngk=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz}
+    engines: {node: '>= 0.4'}
+    dev: true
+
+  /to-fast-properties/2.0.0:
+    resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/to-fast-properties/-/to-fast-properties-2.0.0.tgz}
+    engines: {node: '>=4'}
+
+  /typescript/4.9.5:
+    resolution: {integrity: sha1-CVl5+bzA0J2jJNWNA86Pg3TL5lo=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/typescript/-/typescript-4.9.5.tgz}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
+  /vite/4.2.1:
+    resolution: {integrity: sha1-bC6zN7Df2Aqd7VkiFjuUlJ1/wlQ=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/vite/-/vite-4.2.1.tgz}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      esbuild: 0.17.16
+      postcss: 8.4.21
+      resolve: 1.22.2
+      rollup: 3.20.2
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vue-template-compiler/2.7.14:
+    resolution: {integrity: sha1-RUW337iAkHRMFXeuWsP5ZOYWNLE=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/vue-template-compiler/-/vue-template-compiler-2.7.14.tgz}
+    dependencies:
+      de-indent: 1.0.2
+      he: 1.2.0
+    dev: true
+
+  /vue-tsc/1.2.0_typescript@4.9.5:
+    resolution: {integrity: sha1-K2S5YMyWIISSVBOUQjrOWJpGG+Y=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/vue-tsc/-/vue-tsc-1.2.0.tgz}
+    hasBin: true
+    peerDependencies:
+      typescript: '*'
+    dependencies:
+      '@volar/vue-language-core': 1.2.0
+      '@volar/vue-typescript': 1.2.0
+      typescript: 4.9.5
+    dev: true
+
+  /vue/3.2.47:
+    resolution: {integrity: sha1-Prc2y8YG/IcDjbumoVRwfIo0z/A=, tarball: https://pkgs.d.xiaomi.net:443/artifactory/api/npm/mi-npm/vue/-/vue-3.2.47.tgz}
+    dependencies:
+      '@vue/compiler-dom': 3.2.47
+      '@vue/compiler-sfc': 3.2.47
+      '@vue/runtime-dom': 3.2.47
+      '@vue/server-renderer': 3.2.47_vue@3.2.47
+      '@vue/shared': 3.2.47
