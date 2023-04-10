@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "serve": "pnpm --filter core run serve",
+    "start": "pnpm --filter core run serve",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
