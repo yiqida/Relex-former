@@ -1,4 +1,7 @@
 <template>
+  <div class="tailwind-tested text-3xl font-bold underline">
+    哈哈哈哈
+  </div>
   <RouterLink to="/">Edit</RouterLink>
   <RouterLink to="/runtime">RunTime</RouterLink>
   <RouterView />
@@ -9,6 +12,10 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <style scoped>
+.tailwind-tested {
+  border: 1px red solid;
+  height: 100px;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
