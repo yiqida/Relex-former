@@ -7,7 +7,8 @@
   "scripts": {
     "start": "pnpm --filter core run serve",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "delete": "sh delete-all-node_modules.sh"
   },
   "dependencies": {
     "vue": "^3.2.47"
