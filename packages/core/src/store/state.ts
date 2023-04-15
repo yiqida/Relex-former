@@ -1,11 +1,16 @@
 import type { Component } from "vue"
+// import type { CompsMap } from './index'
 
 export default {
-  compsMap: new Map()
+  compsMap: {}
 }
 
 export interface State {
   compsMap: CompsMap
 }
 
-export type CompsMap = Map<string, () => Promise<Component>>
+export interface CompsMap {
+  [props: string]: () => Promise<Component>
+}
+
+export type CompInviter = () => Promise<Component>

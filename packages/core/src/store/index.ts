@@ -1,5 +1,5 @@
 import type { InjectionKey } from 'vue'
-import { createStore, Store, createLogger } from 'vuex'
+import { createStore, Store, createLogger, useStore as baseUseStore } from 'vuex'
 export * from './mutation-types'
 export * from './state'
 import state, { type State } from './state'
@@ -14,5 +14,10 @@ const store = createStore<State>({
   mutations,
   plugins: [createLogger()]
 })
+
+// 定义自己的 `useStore` 组合式函数
+export function useStore () {
+  return baseUseStore(key)
+}
 
 export default store

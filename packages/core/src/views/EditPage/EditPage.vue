@@ -3,7 +3,14 @@
   <div class="editor-page-wrapper">
     <div class="nav-header"></div>
     <div class="editor-container">
-      <div class="left-comps-container"></div>
+      <div class="left-comps-container">
+        <div 
+          v-for="(compCreator, compName) in compsMap" 
+          :key="compName" 
+          class="comp-button"
+          @click="showComp(compCreator)"
+        >{{ compName }}</div>
+      </div>
       <div class="center-editor">
         <el-row :gutter="formConf.gutter">
           <el-form :size="formConf.size" :label-position="formConf.labelPosition"
@@ -17,16 +24,27 @@
             </Container>
           </el-form>
         </el-row>
+        <component v-if="showComponent" :is="Component"></component>
       </div>
       <div class="right-edited-container"></div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type Component } from 'vue'
 import { ElRow, ElForm } from "element-plus";
 import { Container, Draggable } from "vue3-smooth-dnd";
+import type { CompInviter } from '@/store/index'
 import { formConf } from "../../common/rootFormConfig";
+import { useLeftCompsList } from './hooks/useLeftCompsList'
+
+const { compsMap } = useLeftCompsList()
+
+const showComponent = ref<Component | null>()
+
+async function showComp(compCreator?: CompInviter) {
+  showComponent.value = typeof compCreator === 'function' ? await compCreator() : null
+}
 
 
 onMounted(() => {
@@ -79,6 +97,15 @@ $nav-height: 1rem;
     .left-comps-container {
       border: 1px blueviolet solid;
       width: 2.6rem;
+      .comp-button {
+        @include flex-center;
+        width: 1.15rem;
+        height: 0.28rem;
+        font-size: 0.13rem;
+        color: rgb(48, 49, 51);
+        background: rgb(241, 242, 243);
+        cursor: pointer;
+      }
     }
 
     .center-editor {
