@@ -7,13 +7,6 @@ import store, { key } from './store'
 import { initRemSize } from '@/assets/tools/index'
 import { createLibDefs } from '@/assets/createLibDefs'
 
-const app = createApp(App)
-
-app.use(router)
-app.use(store)
-
-app.mount('#app')
-
 function initApp() {
   createApp(App).use(store, key).use(router).mount('#app');
 }

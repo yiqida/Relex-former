@@ -24,7 +24,9 @@
             </Container>
           </el-form>
         </el-row>
-        <component v-if="showComponent" :is="Component"></component>
+        <div style="border: 2px red solid">
+          <component v-if="showComponent" :is="Component"></component>
+        </div>
       </div>
       <div class="right-edited-container"></div>
     </div>

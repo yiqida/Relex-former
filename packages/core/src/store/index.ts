@@ -15,7 +15,7 @@ const store = createStore<State>({
   plugins: [createLogger()]
 })
 
-// 定义自己的 `useStore` 组合式函数
+// 定义自己的 `useStore` 组合式函数，这样做是为了能让vuex感知到state的TS类型
 export function useStore () {
   return baseUseStore(key)
 }
