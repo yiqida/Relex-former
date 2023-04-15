@@ -1,8 +1,8 @@
 export default {
   __config__: {
-    def: () => import('./el-button.vue'),
+    def: () => import('./myButton.vue'),
     label: '按钮',
-    tag: 'ecy-button',
+    tag: 'my-button',
     tagIcon: 'click-tap',
     grid: false, // 不需要栅格
     action: [],

@@ -25,7 +25,7 @@
           </el-form>
         </el-row>
         <div style="border: 2px red solid">
-          <component v-if="showComponent" :is="Component"></component>
+          <component v-if="showComponent" :is="showComponent"></component>
         </div>
       </div>
       <div class="right-edited-container"></div>
@@ -44,8 +44,9 @@ const { compsMap } = useLeftCompsList()
 
 const showComponent = ref<Component | null>()
 
-async function showComp(compCreator?: CompInviter) {
-  showComponent.value = typeof compCreator === 'function' ? await compCreator() : null
+function showComp(compInviter?: CompInviter) {
+  showComponent.value = typeof compInviter === 'function' ? compInviter() : null
+  console.log('点击button', showComponent.value)
 }
 
 
