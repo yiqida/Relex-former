@@ -1,4 +1,3 @@
-// import comps from './el-button.vue';
 export default {
   __config__: {
     def: () => import('./el-button.vue'),
