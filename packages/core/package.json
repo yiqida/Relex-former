@@ -1,5 +1,5 @@
 {
-  "name": "@kuaida/core",
+  "name": "@relax-former/core",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,7 +14,8 @@
   "dependencies": {
     "element-plus": "^2.3.3",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

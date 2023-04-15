@@ -1,5 +1,5 @@
 {
-  "name": "kuaida2",
+  "name": "relax-former",
   "private": true,
   "author": "Fang Xiangming",
   "version": "0.0.0",
@@ -8,7 +8,8 @@
     "start": "pnpm --filter core run serve",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "delete": "sh delete-all-node_modules.sh"
+    "delete": "sh delete-all-node_modules.sh",
+    "core": "pnpm --filter core"
   },
   "dependencies": {
     "vue": "^3.2.47"

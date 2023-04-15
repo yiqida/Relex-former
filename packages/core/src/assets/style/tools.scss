@@ -1,0 +1,52 @@
+$DESIGN_WIDTH: 1920px;
+$DESIGN_HEIGHT: 1080px;
+
+/*返回相对屏幕的水平位置，直接带入设计稿的水平方向px即可，注意：需要带入px单位；在rem布局中，通常用不上这个方法*/
+@function wid($width) {
+  @return #{calc($width/$DESIGN_WIDTH * 100)}vw;
+} 
+
+/*返回相对屏幕的垂直位置，直接带入设计稿的垂直方向px即可，注意：需要带入px单位*/
+@function hei($height) {
+  @return #{calc($height/$DESIGN_HEIGHT * 100)}vh;
+}
+
+/*水平绝对定位 + 相对父定位容器水平居中*/
+@mixin absolute-horiz-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/*水平绝对定位 + 相对父定位容器垂直居中*/
+@mixin absolute-verti-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*绝对定位 + 相对父定位容器垂直水平居中*/
+@mixin absolute-horiz-verti-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*flex + 让子元素相对父定位容器垂直水平居中*/
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin set-bg-picture($url) {
+  background: url($url);
+  background-size: 100%
+}
+
+@mixin ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

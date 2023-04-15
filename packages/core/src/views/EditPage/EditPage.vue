@@ -1,26 +1,45 @@
 <template>
-  <el-container>
-    <el-aside width="200px">Aside</el-aside>
-    <el-container>
-      <el-header class="flex justify-end items-center">
-        <el-button type="">保存</el-button>
-        <el-button>清空</el-button>
-      </el-header>
-      <el-main>Main</el-main>
-      <el-footer>Footer</el-footer>
-    </el-container>
-  </el-container>
+  <div class="editor-page-wrapper">
+    <div class="nav-header"></div>
+    <div class="editor-container">
+      <div class="left-comps-container"></div>
+      <div class="center-editor">
+      </div>
+      <div class="right-edited-container"></div>
+    </div>
+  </div>
 </template>
-<script>
-import { ElContainer, ElAside, ElHeader, ElMain, ElButton } from "element-plus";
-export default {
-  components: {
-    ElContainer,
-    ElAside,
-    ElHeader,
-    ElMain,
-    ElButton
-  },
-  setup() {},
-};
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  console.log(123)
+})
 </script>
+
+<style lang="scss">
+$nav-height: 1rem;
+
+.editor-page-wrapper {
+  border: 1px red solid;
+  .nav-header {
+    height: $nav-height;
+  }
+  .editor-container {
+    display: flex;
+    min-height: calc(100vh - $nav-height);
+    .left-comps-container {
+      border: 1px blueviolet solid;
+      width: 2.6rem;
+    }
+    .center-editor {
+      border: 1px hotpink solid;
+      width: 13.56rem;
+    }
+    .right-edited-container {
+      border: 1px forestgreen solid;
+      width: 3rem;
+    }
+  }
+}
+</style>
