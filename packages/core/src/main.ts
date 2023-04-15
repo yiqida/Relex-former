@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import "tailwindcss/tailwind.css"
+import './index.css'
 import store, { key } from './store'
 import { initRemSize } from '@/assets/tools/index'
+import { createLibDefs } from '@/assets/createLibDefs'
 
 const app = createApp(App)
 
@@ -16,6 +19,7 @@ function initApp() {
 }
 
 (function init() {
-  initRemSize();
+  initRemSize()
+  createLibDefs()
   initApp()
 })()

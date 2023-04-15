@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="text-center">哈哈哈哈</div> -->
   <div class="editor-page-wrapper">
     <div class="nav-header"></div>
     <div class="editor-container">

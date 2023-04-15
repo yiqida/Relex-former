@@ -1,7 +1,11 @@
+import type { Component } from "vue"
+
 export default {
-  comps: []
+  compsMap: new Map()
 }
 
 export interface State {
-  comps: any[]
+  compsMap: CompsMap
 }
+
+export type CompsMap = Map<string, () => Promise<Component>>

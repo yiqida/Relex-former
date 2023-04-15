@@ -1,5 +1,7 @@
 import type { InjectionKey } from 'vue'
 import { createStore, Store, createLogger } from 'vuex'
+export * from './mutation-types'
+export * from './state'
 import state, { type State } from './state'
 import getters from './getters'
 import mutations from './mutations'

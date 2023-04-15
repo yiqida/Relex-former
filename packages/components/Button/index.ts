@@ -1,9 +1,7 @@
-
-import comps from './el-button.vue';
-
+// import comps from './el-button.vue';
 export default {
   __config__: {
-    def: comps,
+    def: () => import('./el-button.vue'),
     label: '按钮',
     tag: 'ecy-button',
     tagIcon: 'click-tap',
