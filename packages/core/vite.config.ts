@@ -23,7 +23,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@relax-former': fileURLToPath(new URL('../', import.meta.url))
+
     }
   },
   css: {
