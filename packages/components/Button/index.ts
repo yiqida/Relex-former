@@ -3,7 +3,6 @@ export default {
     def: () => import('./el-button.vue'),
     label: '按钮',
     tag: 'el-button',
-    tagIcon: 'click-tap',
     grid: false, // 不需要栅格
     action: [],
   },

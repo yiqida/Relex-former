@@ -1,79 +1,52 @@
 <template>
-  <!-- <div class="text-center">哈哈哈哈</div> -->
   <div class="editor-page-wrapper">
     <div class="nav-header"></div>
     <div class="editor-container">
       <div class="left-comps-container">
-        <Container @drop="onDrop" orientation="vertical" group-name="1">
-          <Draggable class="drop-list" v-for="(compCreator, compName) in compsMap" :key="compName">
-            <div class="comp-button" @click="showComp(compCreator)">{{ compName }}</div>
-          </Draggable>
-        </Container>
+        <div v-for="(item, listIndex) in lib.libs" :key="listIndex">
+          <div class="components-title">
+            {{ item.title }}
+          </div>
+          <draggable class="components-draggable" :list="item.list"  :group="{
+            name: dragableGroup,
+            pull: 'clone',
+            put: false
+          }" item-key="__config__.label" :sort="false">
+            <template #item="{ element }">
+              <div class="components-item">
+                {{ element.__config__.label }}
+              </div>
+            </template>>
+          </draggable>
 
+        </div>
       </div>
       <div class="center-editor">
-        <el-row :gutter="formConf.gutter">
-          <el-form :size="formConf.size" :label-position="formConf.labelPosition"
+        <el-row :gutter="formConf.gutter" class="h-full">
+          <el-form class="w-full h-full" :size="formConf.size" :label-position="formConf.labelPosition"
             :label-width="formConf.labelWidth + 'px'">
-            <Container @drop="onDrop" orientation="vertical" group-name="1">
-              <Draggable class="drop-list" v-for="(item, index) in drawingList" :key="index">
-                <div class="drop-item">
-                  <span>{{ item.name }}</span>
+            <draggable class="drawing-board h-full" :list="drawingList" :animation="340" group="componentsGroup">
+              <template #item="{ element }">
+                <div :drawing-list="drawingList" :current-item="element">
+                  {{ element.__config__.label }}
                 </div>
-              </Draggable>
-            </Container>
+              </template>
+            </draggable>
           </el-form>
         </el-row>
-        <div style="border: 2px red solid">
-          <component v-if="showComponent" :is="Component"></component>
-        </div>
       </div>
       <div class="right-edited-container"></div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, type Component, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import { ElRow, ElForm } from "element-plus";
-import { Container, Draggable } from "vue3-smooth-dnd";
-import type { CompInviter } from '@/store/index'
 import { formConf } from "../../common/rootFormConfig";
-import { useLeftCompsList } from './hooks/useLeftCompsList'
 import draggable from 'vuedraggable'
-
-
-const { compsMap } = useLeftCompsList()
+import lib from '@relax-former/components'
 const drawingList = reactive<any>([])
-
-const showComponent = ref<Component | null>()
-
-async function showComp(compCreator?: CompInviter) {
-  showComponent.value = typeof compCreator === 'function' ? await compCreator() : null
-}
-
-
-onMounted(() => {
-  console.log(123)
-})
-
-function onDrop(dropResult: any) {
-  console.log(dropResult, '----')
-  drawingList.value = applyDrag(drawingList.value, dropResult)
-}
-function applyDrag(arr: any, dragResult: any) {
-  const { removedIndex, addedIndex, payload } = dragResult;
-  if (removedIndex === null && addedIndex === null) return arr;
-  const result = [...arr];
-  let itemToAdd = payload;
-
-  if (removedIndex !== null) {
-    itemToAdd = result.splice(removedIndex, 1)[0];
-  }
-  if (addedIndex !== null) {
-    result.splice(addedIndex, 0, itemToAdd);
-  }
-  return result;
-}
+const dragableGroup = ref('componentsGroup')
 </script>
 
 <style lang="scss">
@@ -115,5 +88,16 @@ $nav-height: 1rem;
       width: 3rem;
     }
   }
+}
+
+.components-draggable {
+  padding-bottom: 20px;
+}
+
+.components-item {
+  display: inline-block;
+  width: 48%;
+  height: 50px;
+  transition: transform 0ms !important;
 }
 </style>

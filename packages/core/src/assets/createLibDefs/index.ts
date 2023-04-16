@@ -16,6 +16,4 @@ export function createLibDefs() {
   })
 
   store.commit(SET_COMPSMAP, compsMap)
-
-  console.log(store.state.compsMap)
 }
