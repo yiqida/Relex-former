@@ -4,19 +4,19 @@
     <div class="nav-header"></div>
     <div class="editor-container">
       <div class="left-comps-container">
-        <div 
-          v-for="(compCreator, compName) in compsMap" 
-          :key="compName" 
-          class="comp-button"
-          @click="showComp(compCreator)"
-        >{{ compName }}</div>
+        <Container @drop="onDrop" orientation="vertical" group-name="1">
+          <Draggable class="drop-list" v-for="(compCreator, compName) in compsMap" :key="compName">
+            <div class="comp-button" @click="showComp(compCreator)">{{ compName }}</div>
+          </Draggable>
+        </Container>
+
       </div>
       <div class="center-editor">
         <el-row :gutter="formConf.gutter">
           <el-form :size="formConf.size" :label-position="formConf.labelPosition"
             :label-width="formConf.labelWidth + 'px'">
-            <Container @drop="onDrop" orientation="vertical">
-              <Draggable class="drop-list" v-for="(item, index) in list" :key="index">
+            <Container @drop="onDrop" orientation="vertical" group-name="1">
+              <Draggable class="drop-list" v-for="(item, index) in drawingList" :key="index">
                 <div class="drop-item">
                   <span>{{ item.name }}</span>
                 </div>
@@ -33,14 +33,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, type Component } from 'vue'
+import { onMounted, ref, type Component, reactive } from 'vue'
 import { ElRow, ElForm } from "element-plus";
 import { Container, Draggable } from "vue3-smooth-dnd";
 import type { CompInviter } from '@/store/index'
 import { formConf } from "../../common/rootFormConfig";
 import { useLeftCompsList } from './hooks/useLeftCompsList'
+import draggable from 'vuedraggable'
+
 
 const { compsMap } = useLeftCompsList()
+const drawingList = reactive<any>([])
 
 const showComponent = ref<Component | null>()
 
@@ -52,19 +55,10 @@ async function showComp(compCreator?: CompInviter) {
 onMounted(() => {
   console.log(123)
 })
-const list = ref([
-  {
-    name: "红",
-  },
-  {
-    name: "绿",
-  },
-  {
-    name: "蓝",
-  },
-]);
+
 function onDrop(dropResult: any) {
-  list.value = applyDrag(list.value, dropResult)
+  console.log(dropResult, '----')
+  drawingList.value = applyDrag(drawingList.value, dropResult)
 }
 function applyDrag(arr: any, dragResult: any) {
   const { removedIndex, addedIndex, payload } = dragResult;
@@ -99,6 +93,7 @@ $nav-height: 1rem;
     .left-comps-container {
       border: 1px blueviolet solid;
       width: 2.6rem;
+
       .comp-button {
         @include flex-center;
         width: 1.15rem;
