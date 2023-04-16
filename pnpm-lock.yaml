@@ -37,6 +37,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@element-plus/icons-vue':
+        specifier: ^2.1.0
+        version: 2.1.0(vue@3.2.47)
       '@relax-former/components':
         specifier: workspace:^0.0.1
         version: link:../components

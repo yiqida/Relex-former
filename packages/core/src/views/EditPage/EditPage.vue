@@ -1,13 +1,20 @@
 <template>
   <div class="editor-page-wrapper">
-    <div class="nav-header"></div>
+    <div class="nav-header flex justify-end items-center">
+      <el-button :icon="Finished" type="text">
+        保存
+      </el-button>
+      <el-button class="delete-btn" :icon="Delete" type="text" @click="handleEmpty">
+        清空
+      </el-button>
+    </div>
     <div class="editor-container">
       <div class="left-comps-container">
         <div v-for="(item, listIndex) in lib.libs" :key="listIndex">
           <div class="components-title">
             {{ item.title }}
           </div>
-          <draggable class="components-draggable" :list="item.list"  :group="{
+          <draggable class="components-draggable" :list="item.list" :group="{
             name: dragableGroup,
             pull: 'clone',
             put: false
@@ -40,13 +47,22 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import { ElRow, ElForm } from "element-plus";
+import { ref } from 'vue'
+import { ElRow, ElForm, ElMessageBox } from "element-plus";
+import { Delete, Finished } from '@element-plus/icons-vue'
 import { formConf } from "../../common/rootFormConfig";
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
-const drawingList = reactive<any>([])
+const drawingList = ref([])
 const dragableGroup = ref('componentsGroup')
+
+const handleEmpty = async () => {
+  await ElMessageBox.alert('确定要清空所有组件吗？', '提示', {
+    callback: () => {
+      drawingList.value = [];
+    }
+  })
+}
 </script>
 
 <style lang="scss">
@@ -57,6 +73,7 @@ $nav-height: 1rem;
 
   .nav-header {
     height: $nav-height;
+    margin-right: 20px;
   }
 
   .editor-container {
