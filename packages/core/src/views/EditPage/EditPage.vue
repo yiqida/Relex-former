@@ -23,9 +23,8 @@
               <div class="components-item">
                 {{ element.__config__.label }}
               </div>
-            </template>>
+            </template>
           </draggable>
-
         </div>
       </div>
       <div class="center-editor">
