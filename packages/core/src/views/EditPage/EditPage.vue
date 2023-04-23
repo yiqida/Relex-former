@@ -20,7 +20,7 @@
             put: false
           }" item-key="__config__.label" :sort="false">
             <template #item="{ element }">
-              <div class="components-item">
+              <div class="components-item" @click="clickComps(element)">
                 {{ element.__config__.label }}
               </div>
             </template>
@@ -40,13 +40,16 @@
             </draggable>
           </el-form>
         </el-row>
+        <div v-for="(comp, index) in drawList" :key="index">
+          <component :is="comp"></component>
+        </div>
       </div>
       <div class="right-edited-container"></div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineAsyncComponent, reactive, markRaw } from 'vue'
 import { ElRow, ElForm, ElMessageBox } from "element-plus";
 import { Delete, Finished } from '@element-plus/icons-vue'
 import { formConf } from "../../common/rootFormConfig";
@@ -61,6 +64,15 @@ const handleEmpty = async () => {
       drawingList.value = [];
     }
   })
+}
+
+const drawList = reactive([] as any[])
+
+function clickComps(element: any) {
+  const defFunc = element.__config__.def
+  // const AsyncComp = computed(() => defineAsyncComponent(defFunc))
+  const AsyncComp = markRaw(defineAsyncComponent(defFunc))
+  drawList.push(AsyncComp)
 }
 </script>
 
