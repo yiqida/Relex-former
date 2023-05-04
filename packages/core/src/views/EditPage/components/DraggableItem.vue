@@ -34,7 +34,7 @@ const handleActiveItem = () => {
     emit('activeItem', props.currentItem)
 }
 const copyItem = () => {
-    emit('copyItem', props.index, props.list)
+    emit('copyItem', props.currentItem, props.list)
 }
 
 const deleteItem = () => {
