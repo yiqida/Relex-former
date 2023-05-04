@@ -1,6 +1,7 @@
+import { defineAsyncComponent } from 'vue';
 export default {
   __config__: {
-    def: () => import('./el-button.vue'),
+    def: defineAsyncComponent(() => import('./el-button.vue')),
     label: '按钮',
     tag: 'el-button',
     grid: false, // 不需要栅格

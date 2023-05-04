@@ -15,10 +15,10 @@
             {{ item.title }}
           </div>
           <draggable class="components-draggable" :list="item.list" :group="{
-            name: dragableGroup,
-            pull: 'clone',
-            put: false
-          }" item-key="__config__.label" :sort="false">
+              name: dragableGroup,
+              pull: 'clone',
+              put: false
+            }" item-key="__config__.label" :sort="false">
             <template #item="{ element }">
               <div class="components-item" @click="clickComps(element)">
                 {{ element.__config__.label }}
@@ -32,17 +32,15 @@
           <el-form class="w-full h-full" :size="formConf.size" :label-position="formConf.labelPosition"
             :label-width="formConf.labelWidth + 'px'">
             <draggable class="drawing-board h-full" :list="drawingList" :animation="340" group="componentsGroup">
-              <template #item="{ element }">
-                <div :drawing-list="drawingList" :current-item="element">
-                  {{ element.__config__.label }}
-                </div>
+              <template #item="{ element, index }">
+                <DraggableItem :drawing-list="drawingList" :current-item="element" :active-id="activeId" :index="index" />
               </template>
             </draggable>
           </el-form>
         </el-row>
-        <div v-for="(comp, index) in drawList" :key="index">
+        <!-- <div v-for="(comp, index) in drawList" :key="index">
           <component :is="comp"></component>
-        </div>
+        </div> -->
       </div>
       <div class="right-edited-container"></div>
     </div>
@@ -55,8 +53,11 @@ import { Delete, Finished } from '@element-plus/icons-vue'
 import { formConf } from "../../common/rootFormConfig";
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
-const drawingList = ref([])
+import DraggableItem from './components/DraggableItem.vue'
+
+const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
+const activeId = ref(-1)
 
 const handleEmpty = async () => {
   await ElMessageBox.alert('确定要清空所有组件吗？', '提示', {
@@ -66,17 +67,17 @@ const handleEmpty = async () => {
   })
 }
 
-const drawList = reactive([] as any[])
+// const drawList = reactive([] as any[])
 
 function clickComps(element: any) {
-  const defFunc = element.__config__.def
-  // const AsyncComp = computed(() => defineAsyncComponent(defFunc))
-  const AsyncComp = markRaw(defineAsyncComponent(defFunc))
-  drawList.push(AsyncComp)
+  // const defFunc = element.__config__.def
+  // // const AsyncComp = computed(() => defineAsyncComponent(defFunc))
+  // const AsyncComp = markRaw(defineAsyncComponent(defFunc))
+  drawingList.value.push(element)
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $nav-height: 1rem;
 
 .editor-page-wrapper {
@@ -126,6 +127,11 @@ $nav-height: 1rem;
   display: inline-block;
   width: 48%;
   height: 50px;
+  font-size: 14px;
   transition: transform 0ms !important;
+}
+
+.components-title {
+  font-size: 16px;
 }
 </style>
