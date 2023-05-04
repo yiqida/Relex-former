@@ -1,11 +1,11 @@
 <template>
     <ElCol v-if="grid" :span="span" @click="handleActiveItem" :class="className">
         <component :is="def" :current-item="currentItem" layout="editor" :index="index"></component>
-        <CopyAndDelete />
+        <CopyAndDelete @copyItem="copyItem" @deleteItem="deleteItem" />
     </ElCol>
     <div v-else @click="handleActiveItem" :class="className">
         <component :is="def" :current-item="currentItem" layout="editor" :index="index"></component>
-        <CopyAndDelete />
+        <CopyAndDelete @copyItem="copyItem" @deleteItem="deleteItem" />
     </div>
 </template>
 <script setup lang="ts">
@@ -15,10 +15,10 @@ const props = defineProps<{
     currentItem: any
     activeId: number
     index: number
-    drawingList: any[]
+    list: any[]
 }>()
 
-const emit = defineEmits(['activeItem'])
+const emit = defineEmits(['activeItem', 'copyItem', 'deleteItem'])
 
 const config = props.currentItem.__config__ as any
 const { needBorder, formId, grid, span, def } = config
@@ -32,6 +32,13 @@ if (needBorder) {
 
 const handleActiveItem = () => {
     emit('activeItem', props.currentItem)
+}
+const copyItem = () => {
+    emit('copyItem', props.index, props.list)
+}
+
+const deleteItem = () => {
+    emit('deleteItem', props.index, props.list)
 }
 </script>
 

@@ -15,10 +15,10 @@
             {{ item.title }}
           </div>
           <draggable class="components-draggable" :list="item.list" :group="{
-              name: dragableGroup,
-              pull: 'clone',
-              put: false
-            }" item-key="__config__.label" :sort="false">
+            name: dragableGroup,
+            pull: 'clone',
+            put: false
+          }" item-key="__config__.label" :sort="false">
             <template #item="{ element }">
               <div class="components-item" @click="clickComps(element)">
                 {{ element.__config__.label }}
@@ -33,7 +33,8 @@
             :label-width="formConf.labelWidth + 'px'">
             <draggable class="drawing-board h-full" :list="drawingList" :animation="340" group="componentsGroup">
               <template #item="{ element, index }">
-                <DraggableItem :drawing-list="drawingList" :current-item="element" :active-id="activeId" :index="index" />
+                <DraggableItem :list="drawingList" :current-item="element" :active-id="activeId" :index="index"
+                  @copyItem="copyItem" @deleteItem="deleteItem" @handleActiveItem="activeFormItem" />
               </template>
             </draggable>
           </el-form>
@@ -44,17 +45,70 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { ElRow, ElForm, ElMessageBox } from "element-plus";
 import { Delete, Finished } from '@element-plus/icons-vue'
 import { formConf } from "../../common/rootFormConfig";
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
 import DraggableItem from './components/DraggableItem.vue'
+import { deepClone } from '@/utils';
 
 const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
+let idGlobal = 100
+
+function clickComps(element: any) {
+  drawingList.value.push(element)
+}
+
+const createIdAndKey = (item: any) => {
+  const config = item.__config__;
+  config.formId = ++idGlobal;
+  // 注：componentName仅为大纲树显示用
+  if (config.layout === 'formItem') {
+    item.__vModel__ = `field${idGlobal}`;
+  } else if (config.layout === 'rowItem') {
+    config.componentName = `row${idGlobal}`;
+    !Array.isArray(config.children) && (config.children = []);
+  } else if (config.layout === 'colTableItem') {
+    item.__vModel__ = `table${idGlobal}`;
+  } else {
+    config.componentName = `myVar${idGlobal}`;
+  }
+  if (Array.isArray(config.children)) {
+    config.children = config.children.map((childItem: any) => createIdAndKey(childItem));
+  }
+  return item;
+}
+
+const copyItem = (item: any, list: any[]) => {
+  let clone = deepClone(item);
+  clone = createIdAndKey(clone);
+  list.push(clone);
+  activeFormItem(clone);
+}
+const deleteItem = (index: number, list: any[]) => {
+  list.splice(index, 1);
+  nextTick(() => {
+    const len = drawingList.value.length;
+    if (len) {
+      activeFormItem(drawingList.value[len - 1]);
+    }
+  });
+}
+
 const activeId = ref(-1)
+const activeData = ref()
+const activeFormItem = (currentItem: any) => {
+  if (currentItem) {
+    activeData.value = currentItem;
+    activeId.value = currentItem.__config__.formId;
+  } else {
+    activeData.value = {};
+    activeId.value = -1;
+  }
+}
 
 const handleEmpty = async () => {
   await ElMessageBox.alert('确定要清空所有组件吗？', '提示', {
@@ -62,10 +116,6 @@ const handleEmpty = async () => {
       drawingList.value = [];
     }
   })
-}
-
-function clickComps(element: any) {
-  drawingList.value.push(element)
 }
 </script>
 
