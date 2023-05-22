@@ -40,7 +40,9 @@
           </el-form>
         </el-row>
       </div>
-      <div class="right-edited-container"></div>
+      <div class="right-edited-container">
+        <AttributePannel></AttributePannel>
+      </div>
     </div>
   </div>
 </template>
@@ -52,7 +54,9 @@ import { formConf } from "../../common/rootFormConfig";
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
 import DraggableItem from './components/DraggableItem.vue'
+import AttributePannel from './components/AttributePannel.vue';
 import { deepClone } from '@/utils';
+import type { ActiveData } from '@/types/schema'
 
 const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
@@ -99,7 +103,34 @@ const deleteItem = (index: number, list: any[]) => {
 }
 
 const activeId = ref(-1)
-const activeData = ref()
+
+const activeData = ref<ActiveData>({
+    "__config__":{
+        "tag":"ecy-block",
+        "tagIcon":"list-view",
+        "label":"标题面板",
+        "needBorder":true,
+        "children":[
+
+        ],
+        "draggGroup":"blockGroup",
+        "header":[
+
+        ],
+        "visibleOn":"",
+        "tip":"",
+        "formId":101,
+        "renderKey":"1011684720877373",
+        "componentName":"myVar101"
+    },
+    "title":"一级页面不需要面包屑",
+    "id":101,
+    "__children__":[
+
+    ],
+    "undefined":""
+})
+
 const activeFormItem = (currentItem: any) => {
   if (currentItem) {
     activeData.value = currentItem;
