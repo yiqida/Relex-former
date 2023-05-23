@@ -269,8 +269,8 @@ const libModule: Module<LibState, State> = {
   },
   getters: {
     getComDef: (state) => (com: ActiveData) => {
-      if (state.libDefs[com.__config__.tag]) {
-        return state.libDefs[com.__config__.tag];
+      if (state.libEdit[com.__config__.tag]) {
+        return state.libEdit[com.__config__.tag];
       }
     },
   }

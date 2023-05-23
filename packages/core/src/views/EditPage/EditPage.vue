@@ -41,7 +41,7 @@
         </el-row>
       </div>
       <div class="right-edited-container">
-        <AttributePannel></AttributePannel>
+        <AttributePannel :active-data="activeData"></AttributePannel>
       </div>
     </div>
   </div>
@@ -106,7 +106,7 @@ const activeId = ref(-1)
 
 const activeData = ref<ActiveData>({
     "__config__":{
-        "tag":"ecy-block",
+        "tag":"el-demo-block",
         "tagIcon":"list-view",
         "label":"标题面板",
         "needBorder":true,

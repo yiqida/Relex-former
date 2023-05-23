@@ -3,9 +3,10 @@
     <el-tabs v-model="activeTab" class="attribute-panel-tab" @tab-click="handleClick">
       <el-tab-pane label="组件属性" name="compAttr">
         <el-form v-if="showField">
-          <el-form-item label="标题">
+          <!-- <el-form-item label="标题">
             <el-input v-model="form.name" />
-          </el-form-item>
+          </el-form-item> -->
+          <EditorGroup :activeData="activeData"></EditorGroup>
         </el-form>
       </el-tab-pane>
       <el-tab-pane label="页面属性" name="pageAttr">Config</el-tab-pane>
@@ -18,6 +19,7 @@ import { reactive, defineProps, withDefaults } from 'vue'
 import { ElTabs, ElTabPane, ElForm, ElFormItem } from "element-plus";
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
+import EditorGroup from './EditorGroup.vue'
 
 interface Props {
   activeData: any,
@@ -38,7 +40,6 @@ const form = reactive({
 })
 
 const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event)
 }
 
 </script>
