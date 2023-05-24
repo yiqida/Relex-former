@@ -47,7 +47,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, watch } from 'vue'
 import { ElRow, ElForm, ElMessageBox } from "element-plus";
 import { Delete, Finished } from '@element-plus/icons-vue'
 import { formConf } from "../../common/rootFormConfig";
@@ -56,7 +56,8 @@ import lib from '@relax-former/components'
 import DraggableItem from './components/DraggableItem.vue'
 import AttributePannel from './components/AttributePannel.vue';
 import { deepClone } from '@/utils';
-import type { ActiveData } from '@/types/schema'
+import { useMapMutations, useMapState } from '@/hooks/useMap';
+import { SET_ACTIVE_DATA } from '@/store'
 
 const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
@@ -102,9 +103,30 @@ const deleteItem = (index: number, list: any[]) => {
   });
 }
 
+const { activeData } = useMapState(['activeData'])
+const { setActiveData } = useMapMutations({
+  setActiveData: SET_ACTIVE_DATA
+})
+
+
 const activeId = ref(-1)
 
-const activeData = ref<ActiveData>({
+const activeFormItem = (currentItem: any) => {
+  if (currentItem) {
+    // activeData.value = currentItem;
+    setActiveData(currentItem)
+    activeId.value = currentItem.__config__.formId;
+  } else {
+    // activeData.value = {};
+    setActiveData({})
+    activeId.value = -1;
+  }
+}
+
+/**
+ * 临时写，供右侧编辑器使用
+ */
+setActiveData({
     "__config__":{
         "tag":"el-demo-block",
         "tagIcon":"list-view",
@@ -131,15 +153,12 @@ const activeData = ref<ActiveData>({
     "undefined":""
 })
 
-const activeFormItem = (currentItem: any) => {
-  if (currentItem) {
-    activeData.value = currentItem;
-    activeId.value = currentItem.__config__.formId;
-  } else {
-    activeData.value = {};
-    activeId.value = -1;
-  }
-}
+watch(activeData, () => {
+  console.log('activeData changed!')
+},{
+  deep: true,
+})
+
 
 const handleEmpty = async () => {
   await ElMessageBox.alert('确定要清空所有组件吗？', '提示', {

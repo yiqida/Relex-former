@@ -1,1 +1,2 @@
 export const SET_COMPSMAP = 'SET_COMPSMAP'
+export const SET_ACTIVE_DATA = 'SET_ACTIVE_DATA'

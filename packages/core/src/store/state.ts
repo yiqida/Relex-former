@@ -1,12 +1,15 @@
 import type { Component } from "vue"
+import type { ActiveData } from "@/types/schema"
 // import type { CompsMap } from './index'
 
 export default {
-  compsMap: {}
+  compsMap: {},
+  activeData: {}
 }
 
 export interface State {
   compsMap: CompsMap
+  activeData: ActiveData
 }
 
 export interface CompsMap {
