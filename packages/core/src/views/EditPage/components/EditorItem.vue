@@ -1,6 +1,6 @@
 <template>
   <el-form-item :label="desc.label">
-    <component :is="desc.type" :desc="desc"></component>
+    <component :is="desc.type" :desc="desc" v-model="value"></component>
   </el-form-item>
 </template>
 
@@ -8,7 +8,7 @@
 import { defineProps, withDefaults, computed } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
 import { useMapMutations, useMapState } from '@/hooks/useMap'
-import { SET_ACTIVE_DATA } from '@/store'
+import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
 
 interface Props {
   desc: EditItem
@@ -22,17 +22,21 @@ const props = withDefaults(defineProps<Props>(), {
 
 // console.log('----props', props)
 
-// const { setActiveData } = useMapMutations({
-//   setActiveData: SET_ACTIVE_DATA
-// })
+const { setActiveData, setActiveDataPath } = useMapMutations({
+  setActiveData: SET_ACTIVE_DATA,
+  setActiveDataPath: SET_ACTIVE_DATE_PATH
+})
 
-function parsePath(path: string) {
+function parsePath(path?: string) {
   /**
    * 这个if不知道是干什么的
    */
+  if (!path) return function() {}
+
   if (/[^\w.\-$]/.test(path)) {
     return function() {};
   }
+
   const segments = path.split('.'); // __config__  visibleOn
 
   return (obj: ActiveData) => {
@@ -53,15 +57,43 @@ function parsePath(path: string) {
   };
 }
 
-console.log(parsePath('__config__.disabled')(props.model))
-console.log(parsePath('__config__.haha')(props.model))
-console.log(parsePath('__config__.disabled')(props.model))
 
-// const value = computed({
-//   get() {
-//     return props.model
-//   }
-// })
+const value = computed({
+  get() {
+    return parsePath(props.desc.model)(props.model)
+  },
+  set(val) {
+    try {
+      if (props.desc.model) {
+        // 支持带横杠的show-password赋值
+        const arr = props.desc.model.toString().split('.');
+
+        const newArr = arr.map((item: any) => {
+          let hasBar = item.indexOf('-');
+          if (hasBar >= 0) {
+            item = `['${item}']`;
+          }
+          return item;
+        });
+
+        let descModel = newArr.join('.');
+
+        descModel = descModel
+          .replace(/^\[/, '')
+          .replace(/\]$/, '')
+
+        setActiveDataPath({
+          path: descModel,
+          val
+        })
+      } else {
+        setActiveData(val)
+      }
+    } catch(err) {
+      console.error(err, 'error');  
+    }
+  }
+})
 
 </script>
 

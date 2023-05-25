@@ -8,5 +8,9 @@ export default {
   },
   [names.SET_ACTIVE_DATA](state: State, activeData: ActiveData) {
     state.activeData = activeData
+  },
+  [names.SET_ACTIVE_DATE_PATH](state: State, { path, val }: { path: string, val: any}) {
+    debugger
+    state.activeData[path] = val
   }
 }
