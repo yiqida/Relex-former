@@ -108,23 +108,20 @@ const { setActiveData } = useMapMutations({
   setActiveData: SET_ACTIVE_DATA
 })
 
-
 const activeId = ref(-1)
 
 const activeFormItem = (currentItem: any) => {
   if (currentItem) {
-    // activeData.value = currentItem;
     setActiveData(currentItem)
     activeId.value = currentItem.__config__.formId;
   } else {
-    // activeData.value = {};
     setActiveData({})
     activeId.value = -1;
   }
 }
 
 /**
- * 临时写，供右侧编辑器使用
+ * 临时写，方便右侧编辑器开发
  */
 setActiveData({
     "__config__":{
@@ -157,6 +154,7 @@ watch(activeData, () => {
   console.log('activeData changed!')
 },{
   deep: true,
+  flush: 'sync'
 })
 
 

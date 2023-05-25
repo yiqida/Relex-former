@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { defineProps, withDefaults, computed } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
-import { useMapMutations, useMapState } from '@/hooks/useMap'
+import { useMapMutations } from '@/hooks/useMap'
 import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
 
 interface Props {
@@ -19,8 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
   desc: () => ({} as EditItem),
   model: () => ({} as ActiveData)
 })
-
-// console.log('----props', props)
 
 const { setActiveData, setActiveDataPath } = useMapMutations({
   setActiveData: SET_ACTIVE_DATA,
@@ -65,25 +63,8 @@ const value = computed({
   set(val) {
     try {
       if (props.desc.model) {
-        // 支持带横杠的show-password赋值
-        const arr = props.desc.model.toString().split('.');
-
-        const newArr = arr.map((item: any) => {
-          let hasBar = item.indexOf('-');
-          if (hasBar >= 0) {
-            item = `['${item}']`;
-          }
-          return item;
-        });
-
-        let descModel = newArr.join('.');
-
-        descModel = descModel
-          .replace(/^\[/, '')
-          .replace(/\]$/, '')
-
         setActiveDataPath({
-          path: descModel,
+          path: props.desc.model,
           val
         })
       } else {

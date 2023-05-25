@@ -24,11 +24,11 @@ const libModule: Module<LibState, State> = {
                 "type":"edString",
                 "model":"__config__.visibleOn"
             },
-            // {
-            //     "label":"标题",
-            //     "type":"edString",
-            //     "model":"title"
-            // },
+            {
+                "label":"标题",
+                "type":"edString",
+                "model":"title"
+            },
             // {
             //     "label":"右侧按钮",
             //     "type":"edAddComp",
