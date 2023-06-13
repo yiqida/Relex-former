@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   model: () => ({} as ActiveData)
 })
 
-const { setActiveData, setActiveDataPath } = useMapMutations({
+const { setActiveData } = useMapMutations({
   setActiveData: SET_ACTIVE_DATA,
   setActiveDataPath: SET_ACTIVE_DATE_PATH
 })
