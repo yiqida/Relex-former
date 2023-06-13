@@ -41,17 +41,9 @@ function parsePath(path?: string) {
     return function() {};
   }
 
-  if(props.desc.type === 'edObject') {
-    debugger
-  }
-
   const segments = `${path}`.split('.'); // __config__  visibleOn
 
   return (obj: any) => {
-    console.log('obj', obj)
-    if(props.desc.type === 'edObject') {
-      debugger
-    }
     for (let i = 0; i < segments.length; i++) {
       if (!obj) return;
       const key = segments[i];

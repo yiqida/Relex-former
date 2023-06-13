@@ -124,33 +124,33 @@ const activeFormItem = (currentItem: any) => {
 /**
  * 临时写，方便右侧编辑器开发
  */
- setActiveData({
-    "__config__":{
-        "tag":"el-demo-block",
-        "tagIcon":"list-view",
-        "label":"标题面板",
-        "needBorder":true,
-        "children":[
+//  setActiveData({
+//     "__config__":{
+//         "tag":"el-demo-block",
+//         "tagIcon":"list-view",
+//         "label":"标题面板",
+//         "needBorder":true,
+//         "children":[
 
-        ],
-        "draggGroup":"blockGroup",
-        "header":[
+//         ],
+//         "draggGroup":"blockGroup",
+//         "header":[
 
-        ],
-        "visibleOn":"",
-        "tip":"",
-        "formId":101,
-        "renderKey":"1011684720877373",
-        "componentName":"myVar101"
-    },
-    "title":"一级页面不需要面包屑",
-    "id":101,
-    "__children__":[
+//         ],
+//         "visibleOn":"",
+//         "tip":"",
+//         "formId":101,
+//         "renderKey":"1011684720877373",
+//         "componentName":"myVar101"
+//     },
+//     "title":"一级页面不需要面包屑",
+//     "id":101,
+//     "__children__":[
 
-    ],
-    "undefined":""
-})
-// setActiveData(mockActivedTableConfig)
+//     ],
+//     "undefined":""
+// })
+setActiveData(mockActivedTableConfig)
 
 watch(activeData, () => {
   console.log('activeData changed!')
