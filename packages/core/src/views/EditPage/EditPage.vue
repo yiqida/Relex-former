@@ -58,6 +58,7 @@ import AttributePannel from './components/AttributePannel.vue';
 import { deepClone } from '@/utils';
 import { useMapMutations, useMapState } from '@/hooks/useMap';
 import { SET_ACTIVE_DATA } from '@/store'
+import { mockActivedTableConfig } from './mock/el-table/index'
 
 const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
@@ -123,7 +124,7 @@ const activeFormItem = (currentItem: any) => {
 /**
  * 临时写，方便右侧编辑器开发
  */
-setActiveData({
+ setActiveData({
     "__config__":{
         "tag":"el-demo-block",
         "tagIcon":"list-view",
@@ -149,6 +150,7 @@ setActiveData({
     ],
     "undefined":""
 })
+// setActiveData(mockActivedTableConfig)
 
 watch(activeData, () => {
   console.log('activeData changed!')

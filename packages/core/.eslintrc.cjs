@@ -13,6 +13,7 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    'no-debugger': 'off'
+    'no-debugger': 'off',
+    'no-extra-boolean-cast': 'off'
   }
 }

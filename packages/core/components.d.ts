@@ -10,9 +10,13 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Divider: typeof import('./src/components/editor/divider.vue')['default']
+    EdArray: typeof import('./src/components/editor/edArray.vue')['default']
+    EdObject: typeof import('./src/components/editor/edObject.vue')['default']
     EdString: typeof import('./src/components/editor/edString.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCollapse: typeof import('element-plus/es')['ElCollapse']
+    ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElForm: typeof import('element-plus/es')['ElForm']

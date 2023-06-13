@@ -1,18 +1,24 @@
 <template>
-  <el-form-item :label="desc.label">
+  <el-form-item :label="desc.label" style="border: 1px blue solid">
     <component :is="desc.type" :desc="desc" v-model="value"></component>
   </el-form-item>
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, computed } from 'vue'
+import { defineProps, withDefaults, computed, onMounted } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
 import { useMapMutations } from '@/hooks/useMap'
 import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
+import { isEmpty, setValueByPath } from '@/utils/index'
+
+/**
+ * 可能的需求待补充：
+ * 1. emit('update', item) 能力
+ */
 
 interface Props {
   desc: EditItem
-  model: ActiveData
+  model: ActiveData | ActiveData[]  // 这里需要修改，实际上并不一定是activeData
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,15 +35,23 @@ function parsePath(path?: string) {
   /**
    * 这个if不知道是干什么的
    */
-  if (!path) return function() {}
+  if (isEmpty(path)) return function() {}
 
-  if (/[^\w.\-$]/.test(path)) {
+  if (/[^\w.\-$]/.test(path!)) {
     return function() {};
   }
 
-  const segments = path.split('.'); // __config__  visibleOn
+  if(props.desc.type === 'edObject') {
+    debugger
+  }
 
-  return (obj: ActiveData) => {
+  const segments = `${path}`.split('.'); // __config__  visibleOn
+
+  return (obj: any) => {
+    console.log('obj', obj)
+    if(props.desc.type === 'edObject') {
+      debugger
+    }
     for (let i = 0; i < segments.length; i++) {
       if (!obj) return;
       const key = segments[i];
@@ -63,7 +77,7 @@ const value = computed({
   set(val) {
     try {
       if (props.desc.model) {
-        setActiveDataPath({
+        setValueByPath(props.model, {
           path: props.desc.model,
           val
         })
@@ -80,11 +94,15 @@ const value = computed({
 <script lang="ts">
 import divider from '@/components/editor/divider.vue'
 import edString from '@/components/editor/edString.vue'
+import edArray from '@/components/editor/edArray.vue'
+import edObject from '@/components/editor/edObject.vue'
 
 export default {
   components: {
     divider,
-    edString
+    edString,
+    edArray,
+    edObject
   }
 }
 </script>
