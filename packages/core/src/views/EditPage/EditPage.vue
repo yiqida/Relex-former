@@ -206,7 +206,7 @@ $nav-height: 1rem;
 
     .right-edited-container {
       border: 1px forestgreen solid;
-      width: 3rem;
+      width: 5rem;
     }
   }
 }

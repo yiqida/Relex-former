@@ -1,11 +1,27 @@
 <template>
-  <el-form-item :label="desc.label" style="border: 1px blue solid">
-    <component :is="desc.type" :desc="desc" v-model="value"></component>
+  <el-form-item 
+    v-if="isShow" 
+    :label="desc.label" 
+    :label-width="labelWidth" 
+    style="border: 1px green solid; min-width: 100px"
+  >
+   <template v-if="desc.explain" #label>
+      <el-tooltip placement="top">
+        <template #content>
+          <div v-if="desc.linkUrl">
+            <a :href="desc.linkUrl()" target="_blank" style="color:#fff">{{ desc.explain }} </a>
+          </div>
+          <div v-else-if="desc.explain" v-html="desc.explain"></div>
+        </template>
+        <span>{{ desc.label }}</span>
+      </el-tooltip>
+    </template>
+    <component :is="desc.type" :desc="desc" v-model="value" style="min-width: 100px"></component>
   </el-form-item>
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, computed, onMounted } from 'vue'
+import { defineProps, withDefaults, computed } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
 import { useMapMutations } from '@/hooks/useMap'
 import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
@@ -80,6 +96,33 @@ const value = computed({
       console.error(err, 'error');  
     }
   }
+})
+
+function evalExpression(expression: string, data: any) {
+  if (!expression || typeof expression !== 'string') {
+    return true;
+  }
+  try {
+    let fn = new Function('data', `with(data) {return !!(${expression});}`);
+    return fn.call(data, data);
+  } catch (error) {
+    return true;
+  }
+}
+
+const isShow = computed(() => {
+  if (props.desc.visibleOn) {
+    return evalExpression(props.desc.visibleOn, props.model);
+  } else {
+    return true;
+  }
+})
+
+const labelWidth = computed(() => {
+  if (!props.desc.label) {
+    return 0;
+  }
+  return 100
 })
 </script>
 

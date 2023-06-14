@@ -73,47 +73,47 @@ const libModule: Module<LibState, State> = {
                 type: 'edString',
                 label: '列名信息'
               },
-              // prop: {
-              //   visibleOn: 'this.__config__.type === "content"',
-              //   type: 'edString',
-              //   label: 'key信息'
-              // },
-              // srcSource: {
-              //   visibleOn: 'this.__config__.type === "img"',
-              //   type: 'edString',
-              //   label: 'key信息',
-              //   model: '__config__.srcSource'
-              // },
-              // status: {
-              //   visibleOn: 'this.__config__.type === "status"',
-              //   type: 'edString',
-              //   label: 'key信息',
-              //   model: '__config__.srcSource'
-              // },
+              prop: {
+                visibleOn: 'this.__config__.type === "content"',
+                type: 'edString',
+                label: 'key信息'
+              },
+              srcSource: {
+                visibleOn: 'this.__config__.type === "img"',
+                type: 'edString',
+                label: 'key信息',
+                model: '__config__.srcSource'
+              },
+              status: {
+                visibleOn: 'this.__config__.type === "status"',
+                type: 'edString',
+                label: 'key信息',
+                model: '__config__.srcSource'
+              },
               // options: {
               //   visibleOn: 'this.__config__.type === "status"',
               //   type: 'edStatus',
               //   label: 'options状态',
               //   model: '__config__.options'
               // },
-              // aLabel: {
-              //   visibleOn: 'this.__config__.type === "aLabel"',
-              //   type: 'edString',
-              //   label: 'key信息',
-              //   model: '__config__.srcSource'
-              // },
-              // target: {
-              //   visibleOn: 'this.__config__.type === "aLabel"',
-              //   type: 'edString',
-              //   label: 'target',
-              //   model: '__config__.target'
-              // },
-              // content: {
-              //   visibleOn: 'this.__config__.type === "aLabel"',
-              //   type: 'edString',
-              //   label: '文案',
-              //   model: '__config__.content'
-              // },
+              aLabel: {
+                visibleOn: 'this.__config__.type === "aLabel"',
+                type: 'edString',
+                label: 'key信息',
+                model: '__config__.srcSource'
+              },
+              target: {
+                visibleOn: 'this.__config__.type === "aLabel"',
+                type: 'edString',
+                label: 'target',
+                model: '__config__.target'
+              },
+              content: {
+                visibleOn: 'this.__config__.type === "aLabel"',
+                type: 'edString',
+                label: '文案',
+                model: '__config__.content'
+              },
               // slotCode: {
               //   visibleOn: 'this.__config__.type === "slotCode"',
               //   type: 'edCodeIcon',
@@ -123,69 +123,69 @@ const libModule: Module<LibState, State> = {
               //     '表格中的某一列,若不是根据接口返回字段直接展示,而是需要逻辑处理,样式处理等,可使用插槽。插槽代码编辑同Vue',
               //   model: '__config__.slotCode'
               // },
-              // switch: {
-              //   visibleOn: 'this.__config__.type === "switch"',
-              //   type: 'edString',
-              //   label: 'key信息',
-              //   model: '__config__.srcSource'
-              // },
+              switch: {
+                visibleOn: 'this.__config__.type === "switch"',
+                type: 'edString',
+                label: 'key信息',
+                model: '__config__.srcSource'
+              },
               // action: {
               //   type: 'edAction',
               //   model: 'action',
               //   visibleOn: 'this.__config__.type === "switch"'
               // },
-              // buttons: {
-              //   visibleOn: 'this.__config__.type === "button"',
-              //   label: '按钮',
-              //   type: 'edArray',
-              //   showLabel: 'domProps.innerHTML',
-              //   model: '__config__.children',
-              //   item: {
-              //     type: 'edObject',
-              //     props: {
-              //       label: {
-              //         type: 'edString',
-              //         label: '',
-              //         model: 'domProps.innerHTML'
-              //       },
-              //       type: {
-              //         visibleOn: 'this.__config__.type !== "dropdown"',
-              //         label: '',
-              //         type: 'edSelect',
-              //         model: 'type',
-              //         multiple: false,
-              //         options: [
-              //           {
-              //             label: 'main',
-              //             value: 'main'
-              //           },
-              //           {
-              //             label: 'secondary',
-              //             value: 'secondary'
-              //           },
-              //           {
-              //             label: 'tertiary',
-              //             value: 'tertiary'
-              //           }
-              //         ]
-              //       }
-              //     }
-              //   }
-              // },
-              // width: {
-              //   type: 'edString',
-              //   label: '宽度',
-              //   explain: '该列在表格中的宽度'
-              // },
-              // fixed: {
-              //   type: 'edString',
-              //   label: '固定列'
-              // },
-              // align: {
-              //   type: 'edString',
-              //   label: '对齐方式',
-              //   explain: '表格列的对齐方式<br/>center(居中)<br/>left(diyi左对齐)<br/>right(右对齐)'
-              // },
+              buttons: {
+                visibleOn: 'this.__config__.type === "button"',
+                label: '按钮',
+                type: 'edArray',
+                showLabel: 'domProps.innerHTML',
+                model: '__config__.children',
+                item: {
+                  type: 'edObject',
+                  props: {
+                    label: {
+                      type: 'edString',
+                      label: '',
+                      model: 'domProps.innerHTML'
+                    },
+                    // type: {
+                    //   visibleOn: 'this.__config__.type !== "dropdown"',
+                    //   label: '',
+                    //   type: 'edSelect',
+                    //   model: 'type',
+                    //   multiple: false,
+                    //   options: [
+                    //     {
+                    //       label: 'main',
+                    //       value: 'main'
+                    //     },
+                    //     {
+                    //       label: 'secondary',
+                    //       value: 'secondary'
+                    //     },
+                    //     {
+                    //       label: 'tertiary',
+                    //       value: 'tertiary'
+                    //     }
+                    //   ]
+                    // }
+                  }
+                }
+              },
+              width: {
+                type: 'edString',
+                label: '宽度',
+                explain: '该列在表格中的宽度'
+              },
+              fixed: {
+                type: 'edString',
+                label: '固定列'
+              },
+              align: {
+                type: 'edString',
+                label: '对齐方式',
+                explain: '表格列的对齐方式<br/>center(居中)<br/>left(diyi左对齐)<br/>right(右对齐)'
+              },
               // sortable: {
               //   type: 'edSwitch',
               //   label: '支持排序',
@@ -198,18 +198,18 @@ const libModule: Module<LibState, State> = {
               //   explain: '当文字超长时显示省略号,鼠标悬停时显示全部文字',
               //   visibleOn: 'this.__config__.type === "content" || this.__config__.type === "slotCode"'
               // },
-              // headTip: {
-              //   type: 'edString',
-              //   label: '表头tip',
-              //   model: '__config__.headTip'
-              // },
-              // contentTipKey: {
-              //   type: 'edString',
-              //   label: '表格tip的key',
-              //   explain: '表格列tooltip提示',
-              //   model: '__config__.contentTipKey',
-              //   visibleOn: 'this.__config__.type === "content" || this.__config__.type === "button"'
-              // },
+              headTip: {
+                type: 'edString',
+                label: '表头tip',
+                model: '__config__.headTip'
+              },
+              contentTipKey: {
+                type: 'edString',
+                label: '表格tip的key',
+                explain: '表格列tooltip提示',
+                model: '__config__.contentTipKey',
+                visibleOn: 'this.__config__.type === "content" || this.__config__.type === "button"'
+              },
               // prefixText: {
               //   type: 'edSwitch',
               //   label: '开启前缀文本',
@@ -217,18 +217,18 @@ const libModule: Module<LibState, State> = {
               //   model: '__config__.prefixText',
               //   visibleOn: 'this.__config__.type === "switch"'
               // },
-              // textOnTrue: {
-              //   type: 'edString',
-              //   label: 'textOnTrue',
-              //   model: '__config__.textOnTrue',
-              //   visibleOn: 'this.__config__.type === "switch" && __config__.prefixText===true'
-              // },
-              // textOnFalse: {
-              //   type: 'edString',
-              //   label: 'textOnFalse',
-              //   model: '__config__.textOnFalse',
-              //   visibleOn: 'this.__config__.type === "switch" && __config__.prefixText===true'
-              // }
+              textOnTrue: {
+                type: 'edString',
+                label: 'textOnTrue',
+                model: '__config__.textOnTrue',
+                visibleOn: 'this.__config__.type === "switch" && __config__.prefixText===true'
+              },
+              textOnFalse: {
+                type: 'edString',
+                label: 'textOnFalse',
+                model: '__config__.textOnFalse',
+                visibleOn: 'this.__config__.type === "switch" && __config__.prefixText===true'
+              }
             }
           }
         },
