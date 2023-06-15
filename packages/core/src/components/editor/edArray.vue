@@ -7,15 +7,31 @@
         :key="index"
         :name="index"
       >
-        <!-- <div>
-          Consistent with real life: in line with the process and logic of real
-          life, and comply with languages and habits that the users are used to;
-        </div>
-        <div>
-          Consistent within interface: all elements should be consistent, such
-          as: design style, icons and texts, position of elements, etc.
-        </div> -->
-        <!--这里才是Editor，这一层基本上只有edObject-->
+        <template #title>
+          <div style="width: 100%;display: flex; justify-content: space-between; align-items: center;">
+            <div
+              v-if="modelValue[index] && desc.showLabel && parsePath(desc.showLabel)(modelValue[index])"
+              class="label"
+              style="border: 1px red solid"
+            > 
+              {{ parsePath(desc.showLabel)(modelValue[index]) }}
+            </div>
+            <el-dropdown>
+              <span class="el-dropdown-link">
+                操作
+              </span>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item :icon="Plus" v-if="index > 0" @click="moveUpItem(index)">上移</el-dropdown-item>
+                  <el-dropdown-item :icon="CirclePlusFilled" v-if="index < edObjectConfigWithLabel.length - 1" @click="moveDownItem(index)">下移</el-dropdown-item>
+                  <el-dropdown-item :icon="CirclePlus">复制</el-dropdown-item>
+                  <el-dropdown-item :icon="Check" @click="delItem(index)">删除</el-dropdown-item>
+                  <el-dropdown-item :icon="CircleCheck" v-if="desc.valueType">新增</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
+        </template>
         <editor-item :desc="item" :model="modelValue" @update="updateCom"></editor-item>
       </el-collapse-item>
     </el-collapse>
@@ -26,6 +42,15 @@
 import { ref, reactive, defineProps, withDefaults, computed, defineEmits, onMounted } from 'vue'
 import type { EditItem } from '@/types/schema'
 import EditorItem from '@/views/EditPage/components/EditorItem.vue' 
+import { parsePath } from '@/utils/index'
+import {
+  ArrowDown,
+  Check,
+  CircleCheck,
+  CirclePlus,
+  CirclePlusFilled,
+  Plus,
+} from '@element-plus/icons-vue'
 
 interface Props {
   modelValue: any[]
@@ -35,7 +60,7 @@ interface Props {
 const emits = defineEmits<Emits>()
 
 interface Emits {
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:modelValue', value: any): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -43,7 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
   desc: () => ({} as EditItem)
 })
 
-const activeCollapse = ref(['1'])
+const activeCollapse = ref([1])
 
 const edObjectConfigWithLabel = computed(() => {
   let edArrayItem = props.desc.item // edArray 的成员 schema，即 edObject 的 schema。edArray的设定是只能有一种类型的成员，这里成员都是 edObject
@@ -74,13 +99,32 @@ onMounted(() => {
   }
 })
 
-onMounted(() => {
-  console.log('--edArray mounted--')
-  console.log('edObjectConfigWithLabel', edObjectConfigWithLabel.value)
-  console.log('defaultObj', defaultObj)
-  console.log('++++++++++++++++++++')
-  console.log()
-})
+function delItem(index: number) {
+  if (index > 0) {
+    activeCollapse.value = [index - 1];
+  } else {
+    activeCollapse.value = [0];
+  }
+  let newVal = props.modelValue;
+  newVal.splice(index, 1);
+  emits('update:modelValue', newVal);
+}
+
+function moveUpItem(index: number) {
+  activeCollapse.value = [index - 1];
+  let newVal = props.modelValue;
+  let temp = newVal.splice(index, 1, newVal[index - 1])[0];
+  newVal[index - 1] = temp;
+  emits('update:modelValue', newVal);
+}
+
+function moveDownItem(index: number) {
+  activeCollapse.value = [index + 1];
+  let newVal = props.modelValue;
+  let temp = newVal.splice(index, 1, newVal[index + 1])[0];
+  newVal[index + 1] = temp;
+  emits('update:modelValue', newVal);
+}
 
 function updateCom() {
   console.log('updateCom')

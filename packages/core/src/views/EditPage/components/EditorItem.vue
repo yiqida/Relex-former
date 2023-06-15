@@ -25,7 +25,7 @@ import { defineProps, withDefaults, computed } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
 import { useMapMutations } from '@/hooks/useMap'
 import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
-import { isEmpty, setValueByPath } from '@/utils/index'
+import { parsePath, setValueByPath } from '@/utils/index'
 
 /**
  * 可能的需求待补充：
@@ -34,7 +34,8 @@ import { isEmpty, setValueByPath } from '@/utils/index'
 
 interface Props {
   desc: EditItem
-  model: ActiveData | ActiveData[]  // 这里需要修改，实际上并不一定是activeData
+  // model: ActiveData | ActiveData[]  // 这里需要修改，实际上并不一定是activeData
+  model: any
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -46,37 +47,6 @@ const { setActiveData } = useMapMutations({
   setActiveData: SET_ACTIVE_DATA,
   setActiveDataPath: SET_ACTIVE_DATE_PATH
 })
-
-function parsePath(path?: string) {
-  /**
-   * 这个if不知道是干什么的
-   */
-  if (isEmpty(path)) return function() {}
-
-  if (/[^\w.\-$]/.test(path!)) {
-    return function() {};
-  }
-
-  const segments = `${path}`.split('.'); // __config__  visibleOn
-
-  return (obj: any) => {
-    for (let i = 0; i < segments.length; i++) {
-      if (!obj) return;
-      const key = segments[i];
-
-      if (obj[key] === undefined) {
-        if (key === 'disabled') {
-          obj[key] = false
-        } else {
-          obj[key] = ''
-        }
-      }
-      obj = obj[key];
-    }
-    return obj;
-  };
-}
-
 
 const value = computed({
   get() {

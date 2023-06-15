@@ -53,7 +53,23 @@ export function deepClone(obj: any) {
 export function isEmpty(val: any) {
   return val === null || val === undefined
 }
-  
+
+/**
+ * 
+ * @param obj 目标对象
+ * @param path 基于目标对象的赋值路径 
+ * @returns 需要赋的值
+ * 
+ * obj = { 
+ *  msg: { 
+ *    name: 'fangxiangming'
+ *  }
+ * },
+ * 
+ * path = ‘msg.name’
+ * value: 'FDirector'
+ * 执行后 obj.msg.name === 'FDirector'
+ */
 export function setValueByPath(obj: any, { path, val }: { path: string, val: any }) {
   const keys = path.toString().split('.');
 
@@ -89,4 +105,41 @@ export function setValueByPath(obj: any, { path, val }: { path: string, val: any
 
   return obj
 }
+
+/**
+ * 
+ * @param path 
+ * 根据 path 路径从 obj 中取值。如果取不到会变成赋值，赋值固定位空字符串
+ * @returns 取值结果
+ */
+export function parsePath(path?: string) {
+  /**
+   * 这个if不知道是干什么的
+   */
+  if (isEmpty(path)) return function() {}
+
+  if (/[^\w.\-$]/.test(path!)) {
+    return function() {};
+  }
+
+  const segments = `${path}`.split('.'); // __config__  visibleOn
+
+  return (obj: any) => {
+    for (let i = 0; i < segments.length; i++) {
+      if (!obj) return;
+      const key = segments[i];
+
+      if (obj[key] === undefined) {
+        if (key === 'disabled') {
+          obj[key] = false
+        } else {
+          obj[key] = ''
+        }
+      }
+      obj = obj[key];
+    }
+    return obj;
+  };
+}
+
   

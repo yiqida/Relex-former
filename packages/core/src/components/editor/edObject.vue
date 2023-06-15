@@ -12,12 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, defineProps, withDefaults, computed, defineEmits, onMounted } from 'vue'
+import { defineProps, withDefaults, computed, defineEmits } from 'vue'
 import type { EditItem } from '@/types/schema'
 import EditorItem from '@/views/EditPage/components/EditorItem.vue'
 
 interface Props {
-  modelValue: any[]
+  modelValue: any
   desc: EditItem
 }
 
