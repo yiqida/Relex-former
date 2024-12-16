@@ -1,14 +1,14 @@
-import Field from './Field'
-import Form from './Form'
+import Field from "./Field/index.js";
+// import Form from "./Form";
 
 const lib = {
-  name: 'Vant',
+  name: "Vant",
   libs: [
     {
-      title: 'Form',
-      list: [Field]
-    }
-  ]
-}
+      title: "Form",
+      list: [Field],
+    },
+  ],
+};
 
-export default lib
+export default lib;
