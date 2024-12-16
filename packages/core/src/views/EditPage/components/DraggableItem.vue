@@ -9,7 +9,7 @@
 import CopyAndDelete from './CopyAndDelete.vue'
 const props = defineProps<{
     currentItem: any
-    activeId: number
+    activeId: string
     index: number
     list: any[]
 }>()

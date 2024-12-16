@@ -1,12 +1,5 @@
 <template>
-  <div class="editor-group-wrapper">
-    <editor-item
-      v-for="(item, index) in edits" 
-      :key="index"
-      :desc="item"
-      :model="activeData"
-    />
-  </div>
+  <editor-item v-for="(item, index) in edits" :key="index" :desc="item" :model="activeData" />
 </template>
 
 <script setup lang="ts">
@@ -28,6 +21,4 @@ const getCompEdit = useMapGetters(['getComDef']).getComDef
 const edits = computed(() => {
   return getCompEdit.value(props.activeData)
 })
-
-console.log('edits', edits.value)
 </script>

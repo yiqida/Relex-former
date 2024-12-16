@@ -20,7 +20,7 @@
             put: false
           }" item-key="__config__.label" :sort="false">
             <template #item="{ element }">
-              <div class="components-item" @click="clickComps(element)">
+              <div class="components-item" @click="addComponent(element)">
                 {{ element.__config__.label }}
               </div>
             </template>
@@ -40,48 +40,58 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, nextTick, watch } from 'vue'
+import { ref, nextTick } from 'vue'
 import { ElMessageBox } from "element-plus";
 import { Delete, Finished } from '@element-plus/icons-vue'
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
 import DraggableItem from './components/DraggableItem.vue'
 import AttributePannel from './components/AttributePannel.vue';
-import { deepClone } from '@/utils';
-import { useMapMutations, useMapState } from '@/hooks/useMap';
-import { SET_ACTIVE_DATA } from '@/store'
+import { deepClone, buildUUID } from '@/utils';
 
 const drawingList = ref<any[]>([])
 const dragableGroup = ref('componentsGroup')
 let idGlobal = 100
+const activeData = ref<any>()
+const activeId = ref('')
 
-function clickComps(element: any) {
-  drawingList.value.push(element)
+function addComponent(item: any) {
+  const clone = cloneComponent(item);
+  if (!clone) {
+    return;
+  }
+  const { children } = activeData.value?.__config__ || {};
+  if (children) {
+    children.push(clone);
+  } else {
+    drawingList.value.push(clone);
+    activeFormItem(clone);
+  }
 }
 
-const createIdAndKey = (item: any) => {
+function cloneComponent(origin: any) {
+  const clone = deepClone(origin);
+  const config = clone.__config__;
+  // delete config.def;
+  // delete clone.edit;
+  createId(clone);
+  clone.placeholder !== undefined && (clone.placeholder += config.label);
+  return clone
+}
+
+const createId = (item: any) => {
   const config = item.__config__;
-  config.formId = ++idGlobal;
-  // 注：componentName仅为大纲树显示用
-  if (config.layout === 'formItem') {
-    item.__vModel__ = `field${idGlobal}`;
-  } else if (config.layout === 'rowItem') {
-    config.componentName = `row${idGlobal}`;
-    !Array.isArray(config.children) && (config.children = []);
-  } else if (config.layout === 'colTableItem') {
-    item.__vModel__ = `table${idGlobal}`;
-  } else {
-    config.componentName = `myVar${idGlobal}`;
-  }
+  config.formId = buildUUID();
+  item.__vModel__ = `field${++idGlobal}`;
   if (Array.isArray(config.children)) {
-    config.children = config.children.map((childItem: any) => createIdAndKey(childItem));
+    config.children = config.children.map((childItem: any) => createId(childItem));
   }
   return item;
 }
 
 const copyItem = (item: any, list: any[]) => {
   let clone = deepClone(item);
-  clone = createIdAndKey(clone);
+  clone = createId(clone);
   list.push(clone);
   activeFormItem(clone);
 }
@@ -95,59 +105,15 @@ const deleteItem = (index: number, list: any[]) => {
   });
 }
 
-const { activeData } = useMapState(['activeData'])
-const { setActiveData } = useMapMutations({
-  setActiveData: SET_ACTIVE_DATA
-})
-
-const activeId = ref(-1)
-
 const activeFormItem = (currentItem: any) => {
   if (currentItem) {
-    setActiveData(currentItem)
+    activeData.value = currentItem
     activeId.value = currentItem.__config__.formId;
   } else {
-    setActiveData({})
-    activeId.value = -1;
+    activeData.value = {}
+    activeId.value = '';
   }
 }
-
-/**
- * 临时写，方便右侧编辑器开发
- */
-setActiveData({
-  "__config__": {
-    "tag": "el-demo-block",
-    "tagIcon": "list-view",
-    "label": "标题面板",
-    "needBorder": true,
-    "children": [
-
-    ],
-    "draggGroup": "blockGroup",
-    "header": [
-
-    ],
-    "visibleOn": "",
-    "tip": "",
-    "formId": 101,
-    "renderKey": "1011684720877373",
-    "componentName": "myVar101"
-  },
-  "title": "一级页面不需要面包屑",
-  "id": 101,
-  "__children__": [
-
-  ],
-})
-
-watch(activeData, () => {
-  console.log('activeData changed!')
-}, {
-  deep: true,
-  flush: 'sync'
-})
-
 
 const handleEmpty = async () => {
   await ElMessageBox.alert('确定要清空所有组件吗？', '提示', {
