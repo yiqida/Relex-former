@@ -8,13 +8,13 @@
         清空
       </el-button>
     </div>
-    <div class="editor-container">
-      <div class="left-comps-container">
+    <div class="body">
+      <div class="left-boader">
         <div v-for="(item, listIndex) in lib.libs" :key="listIndex">
-          <div class="components-title">
+          <div class="text-base text-[#333] !mx-1 !my-[2px]">
             {{ item.title }}
           </div>
-          <draggable class="components-draggable" :list="item.list" :group="{
+          <draggable class="pb-5" :list="item.list" :group="{
             name: dragableGroup,
             pull: 'clone',
             put: false
@@ -27,7 +27,7 @@
           </draggable>
         </div>
       </div>
-      <div class="center-editor">
+      <div class="center-board">
         <el-row :gutter="formConf.gutter" class="h-full">
           <el-form class="w-full h-full" :size="formConf.size" :label-position="formConf.labelPosition"
             :label-width="formConf.labelWidth + 'px'">
@@ -40,9 +40,7 @@
           </el-form>
         </el-row>
       </div>
-      <div class="right-edited-container">
-        <AttributePannel :active-data="activeData"></AttributePannel>
-      </div>
+      <AttributePannel class="w-[360px]" :active-data="activeData" />
     </div>
   </div>
 </template>
@@ -124,34 +122,34 @@ const activeFormItem = (currentItem: any) => {
  * 临时写，方便右侧编辑器开发
  */
 setActiveData({
-    "__config__":{
-        "tag":"el-demo-block",
-        "tagIcon":"list-view",
-        "label":"标题面板",
-        "needBorder":true,
-        "children":[
-
-        ],
-        "draggGroup":"blockGroup",
-        "header":[
-
-        ],
-        "visibleOn":"",
-        "tip":"",
-        "formId":101,
-        "renderKey":"1011684720877373",
-        "componentName":"myVar101"
-    },
-    "title":"一级页面不需要面包屑",
-    "id":101,
-    "__children__":[
+  "__config__": {
+    "tag": "el-demo-block",
+    "tagIcon": "list-view",
+    "label": "标题面板",
+    "needBorder": true,
+    "children": [
 
     ],
+    "draggGroup": "blockGroup",
+    "header": [
+
+    ],
+    "visibleOn": "",
+    "tip": "",
+    "formId": 101,
+    "renderKey": "1011684720877373",
+    "componentName": "myVar101"
+  },
+  "title": "一级页面不需要面包屑",
+  "id": 101,
+  "__children__": [
+
+  ],
 })
 
 watch(activeData, () => {
   console.log('activeData changed!')
-},{
+}, {
   deep: true,
   flush: 'sync'
 })
@@ -167,59 +165,49 @@ const handleEmpty = async () => {
 </script>
 
 <style lang="scss" scoped>
-$nav-height: 1rem;
+$selectedColor: #f6f7ff;
+$lighterBlue: #409eff;
 
 .editor-page-wrapper {
-
   .nav-header {
     box-sizing: border-box;
     border-bottom: 1px solid #f1e8e8;
   }
 
-  .editor-container {
+  .body {
     display: flex;
-    min-height: calc(100vh - $nav-height);
+    height: calc(100vh - 42px);
 
-    .left-comps-container {
-      border: 1px blueviolet solid;
-      width: 2.6rem;
-
-      .comp-button {
-        @include flex-center;
-        width: 1.15rem;
-        height: 0.28rem;
-        font-size: 0.13rem;
-        color: rgb(48, 49, 51);
-        background: rgb(241, 242, 243);
-        cursor: pointer;
-      }
+    .left-boader {
+      width: 260px;
+      overflow-y: scroll;
     }
 
-    .center-editor {
-      border: 1px hotpink solid;
-      width: 13.56rem;
-    }
-
-    .right-edited-container {
-      border: 1px forestgreen solid;
-      width: 3rem;
+    .center-board {
+      border-left: 1px solid #f1e8e8;
+      border-right: 1px solid #f1e8e8;
+      flex: 1;
+      box-sizing: border-box;
     }
   }
-}
-
-.components-draggable {
-  padding-bottom: 20px;
 }
 
 .components-item {
   display: inline-block;
   width: 48%;
+  margin: 1%;
   height: 50px;
   font-size: 14px;
-  transition: transform 0ms !important;
-}
+  line-height: 50px;
+  text-align: center;
+  background: $selectedColor;
+  cursor: move;
+  border: 1px dashed $selectedColor;
+  border-radius: 3px;
 
-.components-title {
-  font-size: 16px;
+  &:hover {
+    border: 1px dashed #787be8;
+    color: #787be8;
+  }
 }
 </style>

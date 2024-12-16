@@ -3,9 +3,6 @@
     <el-tabs v-model="activeTab" class="attribute-panel-tab" @tab-click="handleClick">
       <el-tab-pane label="组件属性" name="compAttr">
         <el-form v-if="showField">
-          <!-- <el-form-item label="标题">
-            <el-input v-model="form.name" />
-          </el-form-item> -->
           <EditorGroup :activeData="activeData"></EditorGroup>
         </el-form>
       </el-tab-pane>
@@ -43,9 +40,3 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 }
 
 </script>
-
-<style lang="scss">
-.attribute-panel-tab {
-  border: 1px red solid;
-}
-</style>
