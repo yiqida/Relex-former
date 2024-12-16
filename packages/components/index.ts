@@ -1,12 +1,12 @@
-import ButtonSchema from './Button/index'
-import TestCompSchma from './TestComp/index'
+import Field from './Field'
+import Form from './Form'
 
 const lib = {
-  name: '用户自定义组件库',
+  name: 'Vant',
   libs: [
     {
-      title: '基础',
-      list: [ButtonSchema, TestCompSchma]
+      title: 'Form',
+      list: [Field]
     }
   ]
 }

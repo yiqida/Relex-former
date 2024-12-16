@@ -8,10 +8,16 @@ importers:
 
   .:
     dependencies:
+      vant:
+        specifier: ^4.9.10
+        version: 4.9.10(vue@3.5.13(typescript@4.9.5))
       vue:
         specifier: ^3.2.47
         version: 3.5.13(typescript@4.9.5)
     devDependencies:
+      '@vant/auto-import-resolver':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@vitejs/plugin-vue':
         specifier: ^4.1.0
         version: 4.6.2(vite@4.5.5(@types/node@18.19.68)(sass@1.83.0)(terser@5.37.0))(vue@3.5.13(typescript@4.9.5))
@@ -25,7 +31,7 @@ importers:
         specifier: ^4.9.3
         version: 4.9.5
       unplugin-auto-import:
-        specifier: ^0.15.2
+        specifier: ^0.15.3
         version: 0.15.3(@vueuse/core@9.13.0(vue@3.5.13(typescript@4.9.5)))(rollup@3.29.5)
       unplugin-vue-components:
         specifier: ^0.24.1
@@ -671,6 +677,17 @@ packages:
 
   '@ungap/structured-clone@1.2.1':
     resolution: {integrity: sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA==}
+
+  '@vant/auto-import-resolver@1.2.1':
+    resolution: {integrity: sha512-czGWW4UolNITkF3qQSQlpHDHAsI3/GHVKbRMmEEpry7NWdnU4p5a5jBi0VApbaLa5g80Hy10XVs3IB+UozoSUw==}
+
+  '@vant/popperjs@1.3.0':
+    resolution: {integrity: sha512-hB+czUG+aHtjhaEmCJDuXOep0YTZjdlRR+4MSmIFnkCQIxJaXLQdSsR90XWvAI2yvKUI7TCGqR8pQg2RtvkMHw==}
+
+  '@vant/use@1.6.0':
+    resolution: {integrity: sha512-PHHxeAASgiOpSmMjceweIrv2AxDZIkWXyaczksMoWvKV2YAYEhoizRuk/xFnKF+emUIi46TsQ+rvlm/t2BBCfA==}
+    peerDependencies:
+      vue: ^3.0.0
 
   '@vitejs/plugin-vue-jsx@3.1.0':
     resolution: {integrity: sha512-w9M6F3LSEU5kszVb9An2/MmXNxocAnUb3WhRr8bHlimhDrXNt6n6D2nJQR3UXpGlZHh/EsgouOHCsM8V3Ln+WA==}
@@ -2381,6 +2398,11 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
+  vant@4.9.10:
+    resolution: {integrity: sha512-N+QwOuhDxrH2f6+kN05ot6DHBvaM0e1lcoXVvf12rad2KnlybPQ9gjm0d+R+Nz/zydZbe3Fz6bwTssHItri0sw==}
+    peerDependencies:
+      vue: ^3.0.0
+
   vite@4.5.5:
     resolution: {integrity: sha512-ifW3Lb2sMdX+WU91s3R0FyQlAyLxOzCSCP37ujw0+r5POeHPwe6udWVIElKQq8gk3t7b8rkmvqC6IHBpCff4GQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -3066,6 +3088,14 @@ snapshots:
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.1': {}
+
+  '@vant/auto-import-resolver@1.2.1': {}
+
+  '@vant/popperjs@1.3.0': {}
+
+  '@vant/use@1.6.0(vue@3.5.13(typescript@4.9.5))':
+    dependencies:
+      vue: 3.5.13(typescript@4.9.5)
 
   '@vitejs/plugin-vue-jsx@3.1.0(vite@4.5.5(@types/node@18.19.68)(sass@1.83.0)(terser@5.37.0))(vue@3.5.13(typescript@4.8.4))':
     dependencies:
@@ -5063,6 +5093,13 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  vant@4.9.10(vue@3.5.13(typescript@4.9.5)):
+    dependencies:
+      '@vant/popperjs': 1.3.0
+      '@vant/use': 1.6.0(vue@3.5.13(typescript@4.9.5))
+      '@vue/shared': 3.5.13
+      vue: 3.5.13(typescript@4.9.5)
 
   vite@4.5.5(@types/node@18.19.68)(sass@1.83.0)(terser@5.37.0):
     dependencies:
