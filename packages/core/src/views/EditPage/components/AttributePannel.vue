@@ -1,34 +1,19 @@
 <template>
-  <div>
-    <EditorGroup :activeData="activeData"></EditorGroup>
+  <div class="px-4 h-[calc(100vh - 42px)] overflow-y-auto">
+    <editor-item v-for="(item, index) in activeData.edit" :key="index" :desc="item" :model="activeData" />
   </div>
 </template>
 
-<script lang="ts" setup>
-import { reactive, defineProps, withDefaults } from 'vue'
-import { ref } from 'vue'
-import type { TabsPaneContext } from 'element-plus'
-import EditorGroup from './EditorGroup.vue'
+<script setup lang="ts">
+import { defineProps, withDefaults } from 'vue'
+import type { ActiveData } from '@/types/schema'
+import EditorItem from './EditorItem.vue'
 
 interface Props {
-  activeData: any,
-  formConf?: any,
-  showField?: boolean
+  activeData: ActiveData
 }
 
 withDefaults(defineProps<Props>(), {
-  activeData: {},
-  formConf: {},
-  showField: true
+  activeData: () => ({} as ActiveData)
 })
-
-const activeTab = ref('compAttr')
-
-const form = reactive({
-  name: ''
-})
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-}
-
 </script>

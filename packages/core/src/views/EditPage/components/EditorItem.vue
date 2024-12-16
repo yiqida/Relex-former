@@ -1,15 +1,12 @@
 <template>
   <el-form-item :label="desc.label">
-    <component :is="desc.type" :desc="desc" v-model="value"></component>
+    <component :is="desc.type" :desc="desc" v-model:value="value"></component>
   </el-form-item>
 </template>
 
 <script setup lang="ts">
 import { defineProps, withDefaults, computed } from 'vue'
 import type { EditItem, ActiveData } from '@/types/schema'
-import { useMapMutations } from '@/hooks/useMap'
-import { SET_ACTIVE_DATA, SET_ACTIVE_DATE_PATH } from '@/store'
-
 interface Props {
   desc: EditItem
   model: ActiveData
@@ -20,19 +17,11 @@ const props = withDefaults(defineProps<Props>(), {
   model: () => ({} as ActiveData)
 })
 
-const { setActiveData, setActiveDataPath } = useMapMutations({
-  setActiveData: SET_ACTIVE_DATA,
-  setActiveDataPath: SET_ACTIVE_DATE_PATH
-})
-
 function parsePath(path?: string) {
-  /**
-   * 这个if不知道是干什么的
-   */
-  if (!path) return function() {}
+  if (!path) return function () { }
 
   if (/[^\w.\-$]/.test(path)) {
-    return function() {};
+    return function () { };
   }
 
   const segments = path.split('.'); // __config__  visibleOn
@@ -49,7 +38,8 @@ function parsePath(path?: string) {
           obj[key] = ''
         }
       }
-      obj = obj[key];
+      // obj = obj[key];
+      obj = Reflect.get(obj, key);
     }
     return obj;
   };
@@ -58,20 +48,33 @@ function parsePath(path?: string) {
 
 const value = computed({
   get() {
-    return parsePath(props.desc.model)(props.model)
+    return parsePath(props.desc.model)(props.model);
   },
-  set(val) {
+  set(val: any) {
+    let model = props.model;
     try {
       if (props.desc.model) {
-        setActiveDataPath({
-          path: props.desc.model,
-          val
-        })
+        // 支持带横杠的show-password赋值
+        const arr = props.desc.model.toString().split('.');
+        const newArr = arr.map((item: any) => {
+          let hasBar = item.indexOf('-');
+          if (hasBar >= 0) {
+            item = `['${item}']`;
+          }
+          return item;
+        });
+        let descModel = newArr.join('.');
+        descModel.replace(/.(?=\[)/, '');
+        const firstBraces = descModel.indexOf('[');
+        if (firstBraces !== 0) {
+          descModel = `.${descModel}`;
+        }
+        eval(`model${descModel}=val`);
       } else {
-        setActiveData(val)
+        model = val;
       }
-    } catch(err) {
-      console.error(err, 'error');  
+    } catch (err) {
+      console.error(err, 'error');
     }
   }
 })

@@ -9,7 +9,7 @@
       </el-button>
     </div>
     <div class="body">
-      <div class="left-boader">
+      <div class="left-boader h-[calc(100vh - 42px)] overflow-y-auto">
         <div v-for="(item, listIndex) in lib.libs" :key="listIndex">
           <div class="text-base text-[#333] !mx-1 !my-[2px]">
             {{ item.title }}
@@ -27,7 +27,7 @@
           </draggable>
         </div>
       </div>
-      <div class="center-board">
+      <div class="center-board h-[calc(100vh - 42px)] overflow-y-auto">
         <draggable class="drawing-board" :list="drawingList" :animation="340" group="componentsGroup">
           <template #item="{ element, index }">
             <DraggableItem :list="drawingList" :current-item="element" :active-id="activeId" :index="index"
