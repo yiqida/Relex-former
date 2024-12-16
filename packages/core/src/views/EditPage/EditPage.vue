@@ -28,17 +28,12 @@
         </div>
       </div>
       <div class="center-board">
-        <el-row :gutter="formConf.gutter" class="h-full">
-          <el-form class="w-full h-full" :size="formConf.size" :label-position="formConf.labelPosition"
-            :label-width="formConf.labelWidth + 'px'">
-            <draggable class="drawing-board h-full" :list="drawingList" :animation="340" group="componentsGroup">
-              <template #item="{ element, index }">
-                <DraggableItem :list="drawingList" :current-item="element" :active-id="activeId" :index="index"
-                  @copyItem="copyItem" @deleteItem="deleteItem" @handleActiveItem="activeFormItem" />
-              </template>
-            </draggable>
-          </el-form>
-        </el-row>
+        <draggable class="drawing-board" :list="drawingList" :animation="340" group="componentsGroup">
+          <template #item="{ element, index }">
+            <DraggableItem :list="drawingList" :current-item="element" :active-id="activeId" :index="index"
+              @copyItem="copyItem" @deleteItem="deleteItem" @handleActiveItem="activeFormItem" />
+          </template>
+        </draggable>
       </div>
       <AttributePannel class="w-[360px]" :active-data="activeData" />
     </div>
@@ -46,9 +41,8 @@
 </template>
 <script setup lang="ts">
 import { ref, nextTick, watch } from 'vue'
-import { ElRow, ElForm, ElMessageBox } from "element-plus";
+import { ElMessageBox } from "element-plus";
 import { Delete, Finished } from '@element-plus/icons-vue'
-import { formConf } from "../../common/rootFormConfig";
 import draggable from 'vuedraggable'
 import lib from '@relax-former/components'
 import DraggableItem from './components/DraggableItem.vue'
@@ -208,6 +202,34 @@ $lighterBlue: #409eff;
   &:hover {
     border: 1px dashed #787be8;
     color: #787be8;
+  }
+}
+
+
+.drawing-board {
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+  padding-bottom: 200px;
+
+  &:first-child {
+    margin-top: 10px;
+  }
+
+  .active-from-item {
+    &>.el-form-item {
+      background: $selectedColor;
+      border-radius: 6px;
+    }
+
+    &>.drawing-item-copy,
+    &>.drawing-item-delete {
+      display: initial;
+    }
+
+    &>.component-name {
+      color: $lighterBlue;
+    }
   }
 }
 </style>
