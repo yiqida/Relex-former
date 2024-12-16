@@ -4,7 +4,6 @@ import router from './router'
 import "tailwindcss/tailwind.css"
 import './index.css'
 import store, { key } from './store'
-import { initRemSize } from '@/assets/tools/index'
 import { createLibDefs } from '@/assets/createLibDefs'
 
 function initApp() {
@@ -12,7 +11,6 @@ function initApp() {
 }
 
 (function init() {
-  initRemSize()
   createLibDefs()
   initApp()
 })()

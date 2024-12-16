@@ -1,6 +1,6 @@
 <template>
   <div class="editor-page-wrapper">
-    <div class="nav-header flex justify-end items-center">
+    <div class="nav-header flex justify-end items-center h-[42px] !pr-5">
       <el-button :icon="Finished" type="text">
         保存
       </el-button>
@@ -147,7 +147,6 @@ setActiveData({
     "__children__":[
 
     ],
-    "undefined":""
 })
 
 watch(activeData, () => {
@@ -171,11 +170,10 @@ const handleEmpty = async () => {
 $nav-height: 1rem;
 
 .editor-page-wrapper {
-  border: 1px red solid;
 
   .nav-header {
-    height: $nav-height;
-    margin-right: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f1e8e8;
   }
 
   .editor-container {
