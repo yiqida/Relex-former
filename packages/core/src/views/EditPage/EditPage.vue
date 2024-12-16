@@ -210,6 +210,7 @@ $lighterBlue: #409eff;
   height: 100%;
   position: relative;
   overflow: scroll;
+  padding: 0 10px;
   padding-bottom: 200px;
 
   &:first-child {

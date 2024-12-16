@@ -1,15 +1,11 @@
 <template>
-    <ElCol v-if="grid" :span="span" @click="handleActiveItem" :class="className">
-        <component :is="def" :current-item="currentItem" layout="editor" :index="index"></component>
-        <CopyAndDelete @copyItem="copyItem" @deleteItem="deleteItem" />
-    </ElCol>
-    <div v-else @click="handleActiveItem" :class="className">
+    <div @click="handleActiveItem" class="drawing-item"
+        :class="[activeId === formId ? 'active-item' : '', needBorder ? 'drawing-row-item' : '']">
         <component :is="def" :current-item="currentItem" layout="editor" :index="index"></component>
         <CopyAndDelete @copyItem="copyItem" @deleteItem="deleteItem" />
     </div>
 </template>
 <script setup lang="ts">
-import { ElCol } from 'element-plus'
 import CopyAndDelete from './CopyAndDelete.vue'
 const props = defineProps<{
     currentItem: any
@@ -21,14 +17,7 @@ const props = defineProps<{
 const emit = defineEmits(['activeItem', 'copyItem', 'deleteItem'])
 
 const config = props.currentItem.__config__ as any
-const { needBorder, formId, grid, span, def } = config
-let className = 'drawing-item'
-if (props.activeId === formId) {
-    className += ' active-from-item'
-}
-if (needBorder) {
-    className += ' drawing-row-item'
-}
+const { needBorder, formId, def } = config
 
 const handleActiveItem = () => {
     emit('activeItem', props.currentItem)
@@ -43,10 +32,11 @@ const deleteItem = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .drawing-item {
     position: relative;
+    margin-top: 10px;
 }
+
 .drawing-row-item {
     cursor: move;
     box-sizing: border-box;
@@ -54,7 +44,7 @@ const deleteItem = () => {
     border-radius: 3px;
 }
 
-.active-from-item {
+.active-item {
     &>.el-form-item {
         background: #f6f7ff;
         border-radius: 6px;

@@ -5,7 +5,7 @@ const lib = {
   name: "Vant",
   libs: [
     {
-      title: "Form",
+      title: "表单",
       list: [Field],
     },
   ],

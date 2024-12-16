@@ -19,7 +19,7 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver(), VantResolver()]
     }),
-    ElementPlus()
+    ElementPlus({})
   ],
   resolve: {
     alias: {

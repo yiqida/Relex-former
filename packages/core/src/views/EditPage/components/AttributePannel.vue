@@ -13,15 +13,15 @@
 
 <script lang="ts" setup>
 import { reactive, defineProps, withDefaults } from 'vue'
-import { ElTabs, ElTabPane, ElForm, ElFormItem } from "element-plus";
+import { ElTabs, ElTabPane, ElForm } from "element-plus";
 import { ref } from 'vue'
 import type { TabsPaneContext } from 'element-plus'
 import EditorGroup from './EditorGroup.vue'
 
 interface Props {
   activeData: any,
-  formConf: any,
-  showField: boolean
+  formConf?: any,
+  showField?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
